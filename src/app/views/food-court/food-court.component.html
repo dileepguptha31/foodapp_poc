@@ -4,7 +4,8 @@
             <c-row>
                 <c-col>Food Courts</c-col>
                 <c-col class="text-end">
-                    <app-food-court-form (addNewForm)="onAddNewFoodCourt($event)"></app-food-court-form>
+                    <app-food-court-form (addNewForm)="onAddNewFoodCourt($event)"
+                        [foodCourtFormInfo]="editFoodCourt"></app-food-court-form>
                 </c-col>
             </c-row>
         </c-container>
@@ -47,11 +48,11 @@
                     <td class="text-center">
                         <span>{{item.country}}</span>
                     </td>
-                    <td class="text-center">
-                        <svg cIcon name="cil-apps-settings" size="xl"></svg>
+                    <td class="text-center" (click)="onEdit(item)">
+                        <svg [cIcon]="icons.cilPencil" size="xl" title="List Icon"></svg>
                     </td>
-                    <td class="text-center">
-                        <svg cIcon name="cil-cut" size="xl"></svg>
+                    <td class="text-center" (click)="onDelete(item.id)">
+                        <svg [cIcon]="icons.cilDelete" width="25" title="Shield Icon"></svg>
                     </td>
                 </tr>
             </tbody>

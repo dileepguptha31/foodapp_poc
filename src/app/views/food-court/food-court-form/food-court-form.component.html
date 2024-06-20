@@ -1,21 +1,26 @@
-<button cButton color="primary" variant="outline" [cModalToggle]="scrollableLongContentModal.id" size="sm">Add New Food
-    Court</button>
+<button cButton color="primary" variant="outline" [cModalToggle]="foodCourtFormContentModal.id" size="sm" #cModalToggleButton>
+    <svg [cIcon]="icons.cilPlus" width="25" title="Shield Icon">
+    </svg>Add New Food Court</button>
 
 
-<c-modal #scrollableLongContentModal id="scrollableLongContentModal" backdrop="static">
+<c-modal #foodCourtFormContentModal id="foodCourtFormContentModal" backdrop="static">
     <c-modal-header>
-        <h5 cModalTitle>Add New Food Court </h5>
+        <h5 cModalTitle>
+            <svg [cIcon]="icons.cilPlus" width="25" title="Shield Icon">
+            </svg>
+            Add New Food Court
+        </h5>
     </c-modal-header>
     <c-modal-body>
         <ng-container *ngTemplateOutlet="longContent"></ng-container>
     </c-modal-body>
     <c-modal-footer>
-        <button [cModalToggle]="scrollableLongContentModal.id" cButton color="secondary"
+        <button [cModalToggle]="foodCourtFormContentModal.id" cButton color="secondary"
             (click)="foodCourtForm.reset()">
             Close
         </button>
         <button cButton color="primary" [disabled]="!foodCourtForm.valid" (click)="onSubmit()"
-            [cModalToggle]="scrollableLongContentModal.id">Save changes</button>
+            [cModalToggle]="foodCourtFormContentModal.id">Save changes</button>
     </c-modal-footer>
 </c-modal>
 <ng-template #longContent>

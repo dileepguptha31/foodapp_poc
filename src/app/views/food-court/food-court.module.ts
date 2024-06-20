@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, NgStyle } from '@angular/common';
 
 import { FoodCourtFormComponent } from './food-court-form/food-court-form.component';
-import { IconModule } from '@coreui/icons-angular';
+import { IconDirective, IconModule } from '@coreui/icons-angular';
 import {
   AvatarComponent,
   ButtonDirective,
@@ -43,7 +43,7 @@ import { BrowserModule } from '@angular/platform-browser';
     // FormCheckLabelDirective,
     // GridModule,
     // GutterDirective,
-    ModalModule,
+    ModalModule, IconModule, IconDirective,
     // ProgressBarDirective,
     // ProgressComponent,
     // RowComponent,
