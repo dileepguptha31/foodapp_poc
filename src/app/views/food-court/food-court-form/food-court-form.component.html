@@ -1,5 +1,4 @@
-<button cButton color="primary" variant="outline" [cModalToggle]="scrollableLongContentModal.id" size="sm">Add New Food
-    Court</button>
+<button cButton color="primary" variant="outline" [cModalToggle]="scrollableLongContentModal.id" size="sm">+</button>
 
 
 <c-modal #scrollableLongContentModal id="scrollableLongContentModal" backdrop="static">
@@ -15,7 +14,7 @@
             Close
         </button>
         <button cButton color="primary" [disabled]="!foodCourtForm.valid" (click)="onSubmit()"
-            [cModalToggle]="scrollableLongContentModal.id">Save changes</button>
+            [cModalToggle]="scrollableLongContentModal.id">Save</button>
     </c-modal-footer>
 </c-modal>
 <ng-template #longContent>
