@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalModule } from '@coreui/angular';
 import { cilPlus } from '@coreui/icons';
@@ -54,7 +54,7 @@ export class FoodCourtFormComponent implements OnChanges {
     this.foodCourtForm.reset();
   }
 
-  @HostListener('document:keydown.escape', ['$event']) 
+  @HostListener('document:keydown.escape', ['$event'])
   onKeydownHandler(event: KeyboardEvent) {
     console.log(`escape pressed`);
     this.foodCourtForm.reset()
