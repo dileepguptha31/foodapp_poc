@@ -1,0 +1,76 @@
+<c-card>
+    <c-card-header>
+        <c-container>
+            <c-row>
+                <c-col>Food Courts</c-col>
+                <c-col class="text-end"><button cButton color="primary" variant="outline" size="sm"
+                        [cModalToggle]="scrollableLongContentModal.id">Add New Food Court</button></c-col>
+            </c-row>
+        </c-container>
+    </c-card-header>
+    <c-card-body>
+        <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+            <thead class="text-nowrap text-truncate">
+                <tr>
+                    <th class="bg-body-tertiary">Food Court Name</th>
+                    <th class="bg-body-tertiary ">Building Name</th>
+                    <th class="bg-body-tertiary text-center">Street</th>
+                    <th class="bg-body-tertiary text-center">City</th>
+                    <th class="bg-body-tertiary text-center">Pincode</th>
+                    <th class="bg-body-tertiary text-center">State</th>
+                    <th class="bg-body-tertiary text-center">Country</th>
+                    <th class="bg-body-tertiary text-center">Edit</th>
+                    <th class="bg-body-tertiary text-center">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of (foodCournt$ | async)">
+                    <td class="text-center">
+                        <span>{{item.foodcourtname}}</span>
+                    </td>
+                    <td class="text-center">
+                        <span>{{item.buildingname}}</span>
+                    </td>
+                    <td class="text-center">
+                        <span>{{item.streetname}}</span>
+                    </td>
+                    <td class="text-center">
+                        <span>{{item.city}}</span>
+                    </td>
+                    <td class="text-center">
+                        <span>{{item.pincode}}</span>
+                    </td>
+                    <td class="text-center">
+                        <span>{{item.state}}</span>
+                    </td>
+                    <td class="text-center">
+                        <span>{{item.country}}</span>
+                    </td>
+                    <td class="text-center">
+                        <svg cIcon name="cil-apps-settings" size="xl"></svg>
+                    </td>
+                    <td class="text-center">
+                        <svg cIcon name="cil-cut" size="xl"></svg>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </c-card-body>
+</c-card>
+
+
+<c-modal #scrollableLongContentModal id="scrollableLongContentModal" scrollable>
+    <c-modal-header>
+        <h5 cModalTitle>Add New Food Court </h5>
+        <button [cModalToggle]="scrollableLongContentModal.id" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>
+        <app-food-court-form></app-food-court-form>
+    </c-modal-body>
+    <c-modal-footer>
+        <button [cModalToggle]="scrollableLongContentModal.id" cButton color="secondary">
+            Close
+        </button>
+        <button cButton color="primary">Save changes</button>
+    </c-modal-footer>
+</c-modal>

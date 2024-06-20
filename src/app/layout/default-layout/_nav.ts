@@ -11,6 +11,11 @@ export const navItems: INavData[] = [
     }
   },
   {
+    name: 'Food Counter',
+    url: '/food-counter',
+    iconComponent: { name: 'cil-speedometer' },
+  },
+  {
     title: true,
     name: 'Theme'
   },

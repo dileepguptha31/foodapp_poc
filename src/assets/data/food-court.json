@@ -1,0 +1,28 @@
+[
+    {
+        "id": 1,
+        "foodcourtname": "JP Food Court",
+        "floorno": "G",
+        "buildingid": 23,
+        "buildingname": "Tower 1",
+        "streetname": "1st Cross",
+        "city": "Bangalore",
+        "pincode": 560100,
+        "state": "Karnataka",
+        "country": "India",
+        "companyid": 1
+    },
+    {
+        "id": 1,
+        "foodcourtname": "HSR Food Court",
+        "floorno": "1",
+        "buildingid": 100,
+        "buildingname": "Tower 23",
+        "streetname": "3rd Cross",
+        "city": "Bangalore",
+        "pincode": 560100,
+        "state": "Karnataka",
+        "country": "India",
+        "companyid": 1
+    }
+]
