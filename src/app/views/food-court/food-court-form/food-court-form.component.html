@@ -1,10 +1,81 @@
-<form cForm>
-    <div class="mb-3">
-        <label cLabel for="exampleFormControlInput1">Email address</label>
-        <input cFormControl id="exampleFormControlInput1" placeholder="name@example.com" type="email" />
-    </div>
-    <div class="mb-3">
-        <label cLabel for="exampleFormControlTextarea1">Example textarea</label>
-        <textarea cFormControl id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-</form>
+<button cButton color="primary" variant="outline" [cModalToggle]="scrollableLongContentModal.id" size="sm">Add New Food
+    Court</button>
+
+
+<c-modal #scrollableLongContentModal id="scrollableLongContentModal" backdrop="static">
+    <c-modal-header>
+        <h5 cModalTitle>Add New Food Court </h5>
+    </c-modal-header>
+    <c-modal-body>
+        <ng-container *ngTemplateOutlet="longContent"></ng-container>
+    </c-modal-body>
+    <c-modal-footer>
+        <button [cModalToggle]="scrollableLongContentModal.id" cButton color="secondary"
+            (click)="foodCourtForm.reset()">
+            Close
+        </button>
+        <button cButton color="primary" [disabled]="!foodCourtForm.valid" (click)="onSubmit()"
+            [cModalToggle]="scrollableLongContentModal.id">Save changes</button>
+    </c-modal-footer>
+</c-modal>
+<ng-template #longContent>
+    <form cForm [formGroup]="foodCourtForm">
+
+        <c-row class="mb-3">
+            <label cLabel="col" class="col-sm-4">
+                Food Court Name :
+            </label>
+            <c-col sm="8">
+                <input cFormControl id="inputPassword" type="text" formControlName="foodCourtName" autocomplete="off" />
+            </c-col>
+        </c-row>
+        <c-row class="mb-3">
+            <label cLabel="col" class="col-sm-4">
+                Building Name :
+            </label>
+            <c-col sm="8">
+                <input cFormControl id="inputPassword" type="text" formControlName="buildingName" autocomplete="off" />
+            </c-col>
+        </c-row>
+        <c-row class="mb-3">
+            <label cLabel="col" class="col-sm-4">
+                Street Name :
+            </label>
+            <c-col sm="8">
+                <input cFormControl id="inputPassword" type="text" formControlName="streetName" autocomplete="off" />
+            </c-col>
+        </c-row>
+        <c-row class="mb-3">
+            <label cLabel="col" class="col-sm-4">
+                City :
+            </label>
+            <c-col sm="8">
+                <input cFormControl id="inputPassword" type="text" formControlName="city" autocomplete="off" />
+            </c-col>
+        </c-row>
+        <c-row class="mb-3">
+            <label cLabel="col" class="col-sm-4">
+                Pincode :
+            </label>
+            <c-col sm="8">
+                <input cFormControl id="inputPassword" type="text" formControlName="pincode" autocomplete="off" />
+            </c-col>
+        </c-row>
+        <c-row class="mb-3">
+            <label cLabel="col" class="col-sm-4">
+                State :
+            </label>
+            <c-col sm="8">
+                <input cFormControl id="inputPassword" type="text" formControlName="state" autocomplete="off" />
+            </c-col>
+        </c-row>
+        <c-row class="mb-3">
+            <label cLabel="col" class="col-sm-4">
+                Country :
+            </label>
+            <c-col sm="8">
+                <input cFormControl id="inputPassword" type="text" formControlName="country" autocomplete="off" />
+            </c-col>
+        </c-row>
+    </form>
+</ng-template>

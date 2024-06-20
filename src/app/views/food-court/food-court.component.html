@@ -3,8 +3,9 @@
         <c-container>
             <c-row>
                 <c-col>Food Courts</c-col>
-                <c-col class="text-end"><button cButton color="primary" variant="outline" size="sm"
-                        [cModalToggle]="scrollableLongContentModal.id">Add New Food Court</button></c-col>
+                <c-col class="text-end">
+                    <app-food-court-form (addNewForm)="onAddNewFoodCourt($event)"></app-food-court-form>
+                </c-col>
             </c-row>
         </c-container>
     </c-card-header>
@@ -26,13 +27,13 @@
             <tbody>
                 <tr *ngFor="let item of (foodCournt$ | async)">
                     <td class="text-center">
-                        <span>{{item.foodcourtname}}</span>
+                        <span>{{item.foodCourtName}}</span>
                     </td>
                     <td class="text-center">
-                        <span>{{item.buildingname}}</span>
+                        <span>{{item.buildingName}}</span>
                     </td>
                     <td class="text-center">
-                        <span>{{item.streetname}}</span>
+                        <span>{{item.streetName}}</span>
                     </td>
                     <td class="text-center">
                         <span>{{item.city}}</span>
@@ -57,20 +58,3 @@
         </table>
     </c-card-body>
 </c-card>
-
-
-<c-modal #scrollableLongContentModal id="scrollableLongContentModal" scrollable>
-    <c-modal-header>
-        <h5 cModalTitle>Add New Food Court </h5>
-        <button [cModalToggle]="scrollableLongContentModal.id" cButtonClose></button>
-    </c-modal-header>
-    <c-modal-body>
-        <app-food-court-form></app-food-court-form>
-    </c-modal-body>
-    <c-modal-footer>
-        <button [cModalToggle]="scrollableLongContentModal.id" cButton color="secondary">
-            Close
-        </button>
-        <button cButton color="primary">Save changes</button>
-    </c-modal-footer>
-</c-modal>

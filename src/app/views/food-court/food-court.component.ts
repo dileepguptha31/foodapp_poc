@@ -11,7 +11,6 @@ import {
   FormCheckLabelDirective,
   GridModule,
   GutterDirective,
-  ModalModule,
   ProgressBarDirective,
   ProgressComponent,
   RowComponent,
@@ -24,14 +23,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
 import { CommonModule, NgStyle } from '@angular/common';
 import { WidgetsBrandComponent } from '../widgets/widgets-brand/widgets-brand.component';
-import foodCourtData from './../../../assets/data/food-court.json';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { FoodCourtModule } from './food-court.module'
-import { FoodCourtFormComponent } from './food-court-form/food-court-form.component';
+import foodCourtData from './../../../assets/data/food-court.json';
 @Component({
   selector: 'app-food-court',
   standalone: true,
-  imports: [WidgetsDropdownComponent, FoodCourtModule, CommonModule, ModalModule, IconModule, IconDirective, TextColorDirective, CardComponent, GridModule, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, ChartjsComponent, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent],
+  imports: [WidgetsDropdownComponent, FoodCourtModule, CommonModule, IconModule, IconDirective, TextColorDirective, CardComponent, GridModule, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, ChartjsComponent, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent],
   templateUrl: './food-court.component.html',
   styleUrl: './food-court.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -39,6 +37,7 @@ import { FoodCourtFormComponent } from './food-court-form/food-court-form.compon
 export class FoodCourtComponent implements OnInit {
   private foodCourtBehaviourSubject: BehaviorSubject<any[]>;
   public saveEnable: boolean = false;
+  private foodCourtDataList: any[] = JSON.parse(JSON.stringify(foodCourtData));
   constructor() {
     this.foodCourtBehaviourSubject = new BehaviorSubject<any[]>([]);
   }
@@ -47,7 +46,10 @@ export class FoodCourtComponent implements OnInit {
     return this.foodCourtBehaviourSubject.asObservable();
   }
   ngOnInit(): void {
-    this.foodCourtBehaviourSubject.next(foodCourtData);
+    this.foodCourtBehaviourSubject.next(this.foodCourtDataList);
   }
-
+  onAddNewFoodCourt(newFoodCourt: any) {
+    this.foodCourtDataList.push(newFoodCourt);
+    this.foodCourtBehaviourSubject.next(this.foodCourtDataList);
+  }
 }
