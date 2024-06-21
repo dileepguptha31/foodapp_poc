@@ -23,6 +23,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/food-court/routes').then(m => m.routes)
       },
       {
+        path: 'orders',
+        loadChildren: () => import('./views/orders/orders.module').then(m => m.OrdersModule)
+      },
+      {
         path: 'theme',
         loadChildren: () => import('./views/theme/routes').then((m) => m.routes)
       },
