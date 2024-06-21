@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { cilShieldAlt, cilDelete, cilPencil, cilArrowThickRight } from '@coreui/icons';
 import { BehaviorSubject, Observable } from 'rxjs';
-import foodCourtData from './../../../../assets/data/food-court.json';
+import counderData from './../../../../assets/data/counter.json';
 
 @Component({
   selector: 'app-food-counter-view',
@@ -9,57 +9,55 @@ import foodCourtData from './../../../../assets/data/food-court.json';
   styleUrl: './food-counter-view.component.scss'
 })
 export class FoodCounterViewComponent {
-  private foodCourtBehaviourSubject: BehaviorSubject<Array<any>>;
-  public saveEnable: boolean = false;
-  public editFoodCourt: any = {};
-  private foodCourtDataList: Array<any> = JSON.parse(JSON.stringify(foodCourtData));
+  private counterBehaviourSubject: BehaviorSubject<Array<any>>;
+  public editedCounter: any = {};
+  private counterDataList: Array<any> = JSON.parse(JSON.stringify(counderData));
   icons = { cilDelete, cilPencil, cilShieldAlt, cilArrowThickRight };
 
   constructor() {
-    this.foodCourtBehaviourSubject = new BehaviorSubject<Array<any>>([]);
+    this.counterBehaviourSubject = new BehaviorSubject<Array<any>>([]);
   }
 
   get foodCourt$(): Observable<Array<any>> {
-    return this.foodCourtBehaviourSubject.asObservable();
+    return this.counterBehaviourSubject.asObservable();
   }
-
-  isEmptyRecord(): boolean {
-    return this.foodCourtDataList.length > 0;
+  ngOnInit(): void {
+    this.counterBehaviourSubject.next(this.counterDataList);
   }
-  onAddNewFoodCourt(newFoodCourt: any) {
-    if (newFoodCourt.id == -1) {
-      newFoodCourt.id = this.foodCourtDataList.length + 1;
+  onAddCounter(newCounter: any) {
+    if (newCounter.id == -1) {
+      newCounter.id = this.counterDataList.length + 1;
     }
 
     let changed = false;
-    for (let index = 0; index < this.foodCourtDataList.length; index++) {
-      const element = this.foodCourtDataList[index];
-      if (element.id == newFoodCourt.id) {
-        this.foodCourtDataList[index] = newFoodCourt;
+    for (let index = 0; index < this.counterDataList.length; index++) {
+      const element = this.counterDataList[index];
+      if (element.id == newCounter.id) {
+        this.counterDataList[index] = newCounter;
         changed = true;
       }
     }
 
     if (!changed) {
-      this.foodCourtDataList.push(newFoodCourt);
+      this.counterDataList.push(newCounter);
     }
 
-    this.foodCourtBehaviourSubject.next(this.foodCourtDataList);
+    this.counterBehaviourSubject.next(this.counterDataList);
   }
-  
+
   onEdit(data: any) {
-    this.editFoodCourt = data;
+    this.editedCounter = data;
   }
 
   onDelete(id: number) {
-    const foodCourtList: Array<any> = [];
-    for (let index = 0; index < this.foodCourtDataList.length; index++) {
-      const element = this.foodCourtDataList[index];
+    const counterList: Array<any> = [];
+    for (let index = 0; index < this.counterDataList.length; index++) {
+      const element = this.counterDataList[index];
       if (element.id !== id) {
-        foodCourtList.push(element);
+        counterList.push(element);
       }
     }
-    this.foodCourtDataList = foodCourtList;
-    this.foodCourtBehaviourSubject.next(this.foodCourtDataList);
+    this.counterDataList = counterList;
+    this.counterBehaviourSubject.next(this.counterDataList);
   }
 }

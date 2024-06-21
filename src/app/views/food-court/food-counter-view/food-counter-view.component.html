@@ -4,8 +4,8 @@
             <c-row>
                 <c-col>Food Counter</c-col>
                 <c-col class="text-end">
-                    <app-food-counter-form (addNewForm)="onAddNewFoodCourt($event)"
-                        [foodCourtFormInfo]="editFoodCourt"></app-food-counter-form>
+                    <app-food-counter-form (addNewForm)="onAddCounter($event)"
+                        [counterFormInfo]="editedCounter"></app-food-counter-form>
                 </c-col>
             </c-row>
         </c-container>
@@ -14,39 +14,23 @@
         <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
             <thead class="text-nowrap text-truncate">
                 <tr>
-                    <th class="bg-body-tertiary">Food Court Name</th>
-                    <th class="bg-body-tertiary ">Building Name</th>
-                    <th class="bg-body-tertiary text-center">Street</th>
-                    <th class="bg-body-tertiary text-center">City</th>
-                    <th class="bg-body-tertiary text-center">Pincode</th>
-                    <th class="bg-body-tertiary text-center">State</th>
-                    <th class="bg-body-tertiary text-center">Country</th>
+                    <th class="bg-body-tertiary">Counter Name</th>
+                    <th class="bg-body-tertiary ">Counter Desc.</th>
+                    <th class="bg-body-tertiary text-center">Cousine</th>
                     <th class="bg-body-tertiary text-center">Edit</th>
                     <th class="bg-body-tertiary text-center">Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of (foodCourt$ | async)">
-                    <td class="text-center">
-                        <span>{{item.foodCourtName}}</span>
+                    <td>
+                        <span>{{item.counterName}} </span>
+                    </td>
+                    <td>
+                        <span>{{item.counterDesc}}</span>
                     </td>
                     <td class="text-center">
-                        <span>{{item.buildingName}}</span>
-                    </td>
-                    <td class="text-center">
-                        <span>{{item.streetName}}</span>
-                    </td>
-                    <td class="text-center">
-                        <span>{{item.city}}</span>
-                    </td>
-                    <td class="text-center">
-                        <span>{{item.pincode}}</span>
-                    </td>
-                    <td class="text-center">
-                        <span>{{item.state}}</span>
-                    </td>
-                    <td class="text-center">
-                        <span>{{item.country}}</span>
+                        <span>{{item.cousine}}</span>
                     </td>
                     <td class="text-center" (click)="onEdit(item)">
                         <svg [cIcon]="icons.cilPencil" size="xl" title="List Icon"></svg>
@@ -56,7 +40,7 @@
                     </td>
 
                 </tr>
-                <div *ngIf="isEmptyRecord()" class="no-record">
+                <div *ngIf="(foodCourt$ | async)?.length == 0" class="no-record">
                     No Record Found.
                 </div>
             </tbody>

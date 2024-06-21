@@ -1,9 +1,10 @@
-<button cButton color="primary" variant="outline" [cModalToggle]="foodCourtFormContentModal.id" size="sm" #cModalToggleButton>
+<button cButton color="primary" variant="outline" [cModalToggle]="counterFormContentModal.id" size="sm"
+    #cModalToggleButton>
     <svg [cIcon]="icons.cilPlus" width="25" title="Shield Icon">
     </svg>Add Counter</button>
 
 
-<c-modal #foodCourtFormContentModal id="foodCourtFormContentModal" backdrop="static">
+<c-modal #counterFormContentModal id="counterFormContentModal" backdrop="static">
     <c-modal-header>
         <h5 cModalTitle>
             <svg [cIcon]="icons.cilPlus" width="25" title="Shield Icon">
@@ -15,31 +16,29 @@
         <ng-container *ngTemplateOutlet="longContent"></ng-container>
     </c-modal-body>
     <c-modal-footer>
-        <button [cModalToggle]="foodCourtFormContentModal.id" cButton color="secondary"
-            (click)="foodCourtForm.reset()">
+        <button [cModalToggle]="counterFormContentModal.id" cButton color="secondary" (click)="counterForm.reset()">
             Close
         </button>
-        <button cButton color="primary" [disabled]="!foodCourtForm.valid" (click)="onSubmit()"
-            [cModalToggle]="foodCourtFormContentModal.id">Save changes</button>
+        <button cButton color="primary" [disabled]="!counterForm.valid" (click)="onSubmit()"
+            [cModalToggle]="counterFormContentModal.id">Save changes</button>
     </c-modal-footer>
 </c-modal>
 <ng-template #longContent>
-    <!-- <form cForm [formGroup]="foodCourtForm">
-
+    <form cForm [formGroup]="counterForm">
         <c-row class="mb-3">
             <label cLabel="col" class="col-sm-4">
-                Food Court Name :
+                Counter Name :
             </label>
             <c-col sm="8">
-                <input cFormControl id="inputPassword" type="text" formControlName="foodCourtName" autocomplete="off" />
+                <input cFormControl id="inputPassword" type="text" formControlName="counterName" autocomplete="off" />
             </c-col>
         </c-row>
         <c-row class="mb-3">
             <label cLabel="col" class="col-sm-4">
-                Building Name :
+                Counter Description :
             </label>
             <c-col sm="8">
-                <input cFormControl id="inputPassword" type="text" formControlName="buildingName" autocomplete="off" />
+                <textarea cFormControl id="exampleFormControlTextarea1" rows="3" formControlName="counterDesc"></textarea>
             </c-col>
         </c-row>
         <c-row class="mb-3">
@@ -47,40 +46,8 @@
                 Street Name :
             </label>
             <c-col sm="8">
-                <input cFormControl id="inputPassword" type="text" formControlName="streetName" autocomplete="off" />
+                <input cFormControl id="inputPassword" type="text" formControlName="cousine" autocomplete="off" />
             </c-col>
         </c-row>
-        <c-row class="mb-3">
-            <label cLabel="col" class="col-sm-4">
-                City :
-            </label>
-            <c-col sm="8">
-                <input cFormControl id="inputPassword" type="text" formControlName="city" autocomplete="off" />
-            </c-col>
-        </c-row>
-        <c-row class="mb-3">
-            <label cLabel="col" class="col-sm-4">
-                Pincode :
-            </label>
-            <c-col sm="8">
-                <input cFormControl id="inputPassword" type="text" formControlName="pincode" autocomplete="off" />
-            </c-col>
-        </c-row>
-        <c-row class="mb-3">
-            <label cLabel="col" class="col-sm-4">
-                State :
-            </label>
-            <c-col sm="8">
-                <input cFormControl id="inputPassword" type="text" formControlName="state" autocomplete="off" />
-            </c-col>
-        </c-row>
-        <c-row class="mb-3">
-            <label cLabel="col" class="col-sm-4">
-                Country :
-            </label>
-            <c-col sm="8">
-                <input cFormControl id="inputPassword" type="text" formControlName="country" autocomplete="off" />
-            </c-col>
-        </c-row>
-    </form> -->
+    </form>
 </ng-template>

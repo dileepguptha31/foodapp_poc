@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "counterName": "JP Food Court",
+        "counterDesc": "G",
+        "cousine": 23
+    },
+    {
+        "id": 2,
+        "counterName": "HSR Food Court",
+        "counterDesc": "1",
+        "cousine": 100
+    }
+]
