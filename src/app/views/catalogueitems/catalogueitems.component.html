@@ -4,7 +4,7 @@
             <c-row>
                 <c-col>Menu</c-col>
                 <c-col class="text-end">
-                    <!-- <app-food-court-form (addNewForm)="onAddNewMenu($event)"></app-food-court-form> -->
+                    <app-menu-item-detail (addNewForm)="onAddNewMenu($event)" [menuitemdetailform]="editmenuitem"></app-menu-item-detail>
                 </c-col>
             </c-row>
         </c-container>
@@ -13,7 +13,7 @@
         <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
             <thead class="text-nowrap text-truncate">
                 <tr>
-                    <th class="bg-body-tertiary"></th>
+                    <th class="bg-body-tertiary">     </th>
                     <th class="bg-body-tertiary">Name</th>
                     <th class="bg-body-tertiary ">Category</th>
                     <th class="bg-body-tertiary text-center">Sub Category</th>
