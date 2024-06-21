@@ -5,8 +5,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'orderview',
-    component: OrdersComponent
+    path: '',
+    component: OrdersComponent,
+    data: {
+      title: $localize`Orders`
+    }
   },
   { path: '', redirectTo: 'orderview', pathMatch: 'full' }
 ];

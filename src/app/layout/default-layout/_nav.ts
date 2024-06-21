@@ -11,8 +11,8 @@ export const navItems: INavData[] = [
     }
   },
   {
-    name:'Main Menu',
-    url:'/main-menu'
+    name: 'Main Menu',
+    url: '/main-menu'
   },
   {
     name: 'Food Counter',

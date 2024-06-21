@@ -24,7 +24,7 @@ export const routes: Routes = [
       },
       {
         path: 'food-counter',
-        loadChildren: () => import('./views/food-court/routes').then(m => m.routes)
+        loadChildren: () => import('./views/food-court/food-court.module').then(m => m.FoodCourtModule)
       },
       {
         path: 'orders',
