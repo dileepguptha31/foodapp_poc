@@ -19,6 +19,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/dashboard/routes').then((m) => m.routes)
       },
       {
+        path: 'main-menu',
+        loadChildren: () => import('./views/catalogueitems/routes').then((m) => m.routes)
+      },
+      {
         path: 'food-counter',
         loadChildren: () => import('./views/food-court/routes').then(m => m.routes)
       },

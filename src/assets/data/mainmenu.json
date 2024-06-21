@@ -1,0 +1,56 @@
+[
+    {
+        "id":1,
+        "name": "Veg Biryani",
+        "category": "Main Course",
+        "subcategory": "",
+        "status": true,
+        "price": 150,
+        "image": "../../../assets/images/mainmenu/vegbiryani.jpg"
+    },
+    {
+        "id":2,
+        "name": "Chiken Biryani",
+        "category": "Main Course",
+        "subcategory": "",
+        "status": true,
+        "price": 250,
+        "image": "../../../assets/images/mainmenu/chickenBiryani.jpg"
+    },
+    {
+        "id":3,
+        "name": "Vanilla ice cream",
+        "category": "Desserts",
+        "subcategory": "",
+        "status": false,
+        "price": 100,
+        "image": ""
+    },
+    {
+        "id":4,
+        "name": "Leamon Juice",
+        "category": "Drinks",
+        "subcategory": "",
+        "status": true,
+        "price": 25,
+        "image": "../../../assets/images/mainmenu/Juice.jpg"
+    },
+    {
+        "id":5,
+        "name": "Dosa",
+        "category": "Breakfast",
+        "subcategory": "",
+        "status": true,
+        "price": 50,
+        "image": "../../../assets/images/mainmenu/Dosa.jpg"
+    },
+    {
+        "id":6,
+        "name": "French Fries",
+        "category": "Snacks",
+        "subcategory": "",
+        "status": true,
+        "price": 125,
+        "image": "../../../assets/images/mainmenu/FrenchFries.jpg"
+    }
+]
