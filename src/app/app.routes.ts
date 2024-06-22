@@ -20,7 +20,7 @@ export const routes: Routes = [
       },
       {
         path: 'main-menu',
-        loadChildren: () => import('./views/catalogueitems/routes').then((m) => m.routes)
+        loadChildren: () => import('./views/catalogueitems/catalogue-items.module').then((m) => m.CatalogueItemsModule)
       },
       {
         path: 'food-counter',

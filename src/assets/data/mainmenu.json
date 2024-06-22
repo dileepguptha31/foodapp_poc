@@ -6,7 +6,7 @@
         "subcategory": "",
         "status": true,
         "price": 150,
-        "image": "../../../assets/images/mainmenu/vegbiryani.jpg"
+        "image": "https://b.zmtcdn.com/data/dish_images/a098f678350380809a464fb5aaf7128a1602873799.png"
     },
     {
         "id":2,
@@ -15,7 +15,7 @@
         "subcategory": "",
         "status": true,
         "price": 250,
-        "image": "../../../assets/images/mainmenu/chickenBiryani.jpg"
+        "image": "https://b.zmtcdn.com/data/o2_assets/d6dd4d606ac5c05f1b83875137c5fb6f1648972318.png"
     },
     {
         "id":3,
@@ -23,8 +23,8 @@
         "category": "Desserts",
         "subcategory": "",
         "status": false,
-        "price": 100,
-        "image": ""
+        "price": 80,
+        "image": "https://b.zmtcdn.com/data/o2_assets/9b48cabb66daa683dfd274579ba495441634556481.png"
     },
     {
         "id":4,
@@ -33,7 +33,7 @@
         "subcategory": "",
         "status": true,
         "price": 25,
-        "image": "../../../assets/images/mainmenu/Juice.jpg"
+        "image": "https://b.zmtcdn.com/data/dish_photos/73c/f7bfaf12c702a5e7f0b1b849cfe0073c.jpg"
     },
     {
         "id":5,
@@ -42,7 +42,7 @@
         "subcategory": "",
         "status": true,
         "price": 50,
-        "image": "../../../assets/images/mainmenu/Dosa.jpg"
+        "image": "https://b.zmtcdn.com/data/o2_assets/8dc39742916ddc369ebeb91928391b931632716660.png"
     },
     {
         "id":6,
@@ -51,6 +51,6 @@
         "subcategory": "",
         "status": true,
         "price": 125,
-        "image": "../../../assets/images/mainmenu/FrenchFries.jpg"
+        "image": "https://b.zmtcdn.com/data/dish_photos/a0f/892fabb602a2a5b6512fa07cec266a0f.jpg"
     }
 ]

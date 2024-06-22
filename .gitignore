@@ -43,3 +43,5 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+documents/DB_APIs.docx
+documents/AUTO_FOODS-DataModel.pdf
