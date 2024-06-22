@@ -1,36 +1,43 @@
 import { Component } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import mainmenudata from '../../../../assets/data/mainmenu.json'
-
+// import mainmenudata from '../../../../assets/data/mainmenu.json'
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpService } from 'src/app/services/http.service';
+import {catalogueitem} from '../../../models/catalogue-item.model'
 @Component({
   selector: 'app-catalogue-view', 
   templateUrl: './catalogue-view.component.html',
   styleUrl: './catalogue-view.component.scss',
 })
 export class CatalogueViewComponent {
-  private menuItemsSubject: BehaviorSubject<any[]>;
+  private menuItemsSubject: BehaviorSubject<catalogueitem[]>;
   public saveEnable: boolean = false;
   public editmenuitem: any = {};
-  private menuItemList: any[] = JSON.parse(JSON.stringify(mainmenudata));
-  constructor() {
-    this.menuItemsSubject = new BehaviorSubject<any[]>([]);
+  private menuItemList: catalogueitem[] = [];
+  constructor(private router: Router, private activeRoute: ActivatedRoute, private httpService: HttpService) {
+    this.menuItemsSubject = new BehaviorSubject<catalogueitem[]>([]);
   }
 
-  get menuItems$(): Observable<any> {
+  get menuItems$(): Observable<catalogueitem[]> {
     return this.menuItemsSubject.asObservable();
   }
   ngOnInit(): void {
-    this.menuItemsSubject.next(this.menuItemList);
+    // this.menuItemsSubject.next(this.menuItemList);
+
+    this.httpService.getHTTP('CatalogueItem').subscribe((foodCourt: any) => {
+      this.menuItemList = foodCourt;
+      this.menuItemsSubject.next(this.menuItemList);
+    })
   }
   onAddNewMenu(newFoodCourt: any) {
-    if (newFoodCourt.id == -1) {
-      newFoodCourt.id = this.menuItemList.length + 1;
+    if (newFoodCourt._ID == -1) {
+      newFoodCourt._ID = this.menuItemList.length + 1;
     }
 
     let changed = false;
     for (let index = 0; index < this.menuItemList.length; index++) {
       const element = this.menuItemList[index];
-      if (element.id == newFoodCourt.id) {
+      if (element._ID == newFoodCourt._ID) {
         this.menuItemList[index] = newFoodCourt;
         changed = true;
       }
@@ -51,7 +58,7 @@ export class CatalogueViewComponent {
     const foodCourtList: Array<any> = [];
     for (let index = 0; index < this.menuItemList.length; index++) {
       const element = this.menuItemList[index];
-      if (element.id !== id) {
+      if (element._ID !== id) {
         foodCourtList.push(element);
       }
     }

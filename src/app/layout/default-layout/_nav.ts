@@ -12,17 +12,22 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Main Menu',
-    url: '/main-menu'
+    url: '/main-menu',
+    iconComponent: { name: 'cil-list' },
   },
   {
-    name: 'Food Counter',
+    name: 'Food Court',
     url: '/food-counter',
-    iconComponent: { name: 'cil-fastfood' },
+    iconComponent: { name: 'cil-building' },
+  },
+  {
+    title: true,
+    name: 'Sales'
   },
   {
     name: 'Orders',
     url: '/orders',
-    iconComponent: { name: 'cil-speedometer' },
+    iconComponent: { name: 'cil-cart' },
   },
   {
     title: true,

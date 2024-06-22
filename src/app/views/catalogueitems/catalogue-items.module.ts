@@ -27,6 +27,10 @@ import { RouterModule, Routes } from '@angular/router';
 import {CatalogueitemsComponent} from './catalogueitems.component'
 import {CatalogueViewComponent} from './catalogue-view/catalogue-view.component';
 import {MenuItemDetailComponent} from './menu-item-detail/menu-item-detail.component'
+import { HttpService } from '../../services/http.service';
+import { HttpClientModule } from '@angular/common/http';
+import {catalogueitem} from '../../models/catalogue-item.model'
+
 const routes: Routes = [
   {
     path: '', component: CatalogueitemsComponent,
@@ -47,13 +51,14 @@ const routes: Routes = [
 @NgModule({
   declarations: [CatalogueViewComponent,CatalogueitemsComponent,MenuItemDetailComponent],
   exports: [],
+  providers:[HttpService],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes),HttpClientModule,
     IconModule, ReactiveFormsModule, FormsModule, CardModule, FormDirective,
     ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent,
     ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective, AvatarComponent,FormCheckInputDirective,FormCheckComponent,
-    FormCheckLabelDirective,
+    FormCheckLabelDirective 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
