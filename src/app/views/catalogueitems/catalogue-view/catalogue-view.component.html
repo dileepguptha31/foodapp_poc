@@ -38,10 +38,13 @@
                         <span>{{item.subcategory}}</span>
                     </td>
                     <td class="text-center">
-                        <span>{{item.status}}</span>
+                        <!-- <span>{{item.status}}</span> -->
+                    <c-form-check [switch]="true">
+                        <input cFormCheckInput type="checkbox" id="statusinput" /> 
+                    </c-form-check>
                     </td>
                     <td class="text-center">
-                        <span>{{item.price}}</span>
+                        <span>₹ {{item.price}}</span>
                     </td>                    
                     <td class="text-center" (click)="onEdit(item)">
                         <svg cIcon name="cil-pencil" size="xl"></svg>

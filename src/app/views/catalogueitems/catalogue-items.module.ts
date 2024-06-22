@@ -3,11 +3,24 @@ import { CommonModule } from '@angular/common';
 
 import { IconModule } from '@coreui/icons-angular';
 import {
-  ButtonDirective, CardBodyComponent,
-  CardComponent, CardHeaderComponent, CardModule, ColComponent, FormControlDirective,
+  ButtonDirective,
+  ButtonGroupComponent, 
+  CardBodyComponent,
+  CardComponent, 
+  CardHeaderComponent, 
+  CardModule, 
+  ColComponent,
+  FormCheckComponent,
+  FormCheckLabelDirective,
+  FormCheckInputDirective, 
+  FormControlDirective,
   FormDirective,
   FormLabelDirective,
-  GridModule, ModalModule, RowComponent, TableModule, AvatarComponent
+  GridModule, 
+  ModalModule, 
+  RowComponent, 
+  TableModule, 
+  AvatarComponent,      
 } from '@coreui/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -39,7 +52,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     IconModule, ReactiveFormsModule, FormsModule, CardModule, FormDirective,
     ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent,
-    ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective, AvatarComponent
+    ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective, AvatarComponent,FormCheckInputDirective,FormCheckComponent,
+    FormCheckLabelDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

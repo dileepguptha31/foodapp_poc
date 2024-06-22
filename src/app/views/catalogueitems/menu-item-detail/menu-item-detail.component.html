@@ -1,6 +1,7 @@
 <button cButton color="primary" variant="outline" [cModalToggle]="menuitemDetailModel.id" size="sm" #cModalToggleButton>
-    <svg [cIcon]="icons.cilPlus" width="25" title="Shield Icon">
-    </svg>Add Menu</button>
+    <svg [cIcon]="icons.cilPlus" width="25" title="Shield Icon"></svg>
+    <!-- Add Menu -->
+</button>
 
 
 <c-modal #menuitemDetailModel id="menuitemDetailModel" backdrop="static">
@@ -23,7 +24,17 @@
 </c-modal>
 <ng-template #longContent>
     <form cForm [formGroup]="menuitemdetailform">
-
+        <c-row class="mb-3">
+            <label cLabel="col" class="col-sm-4">
+                Status :
+            </label>
+            <c-col sm="8">                
+                <c-form-check [switch]="true">
+                    <input cFormCheckInput type="checkbox" id="statusinput" /> 
+                    <label cFormCheckLabel for="statusinput"> Status</label>                       
+                </c-form-check>
+            </c-col>
+        </c-row> 
         <c-row class="mb-3">
             <label cLabel="col" class="col-sm-4">
                 Name :
@@ -55,62 +66,16 @@
             <c-col sm="8">
                 <input  cFormControl id="subcategoryinput" type="text" formControlName="subcategory"/>
             </c-col>
-        </c-row> 
-        <c-row class="mb-3">
-            <label cLabel="col" class="col-sm-4">
-                Status :
-            </label>
-            <c-col sm="8">
-                <!-- <c-form-check>
-                <input cFormCheckInput id="statusinput" required type="checkbox" formControlName="status" />
-                </c-form-check> -->
-                <!-- <form [formGroup]="trafficRadioGroup"> -->
-                    <c-button-group class="float-end me-3" role="group">
-                      <input
-                        class="btn-check"
-                        formControlName="status"
-                        type="radio"
-                        value="true"
-                        id="enableRadio"
-                      />
-                      <label
-                        (click)="setMenuItemStatus(true)"
-                        cButton
-                        cFormCheckLabel
-                        color="secondary"
-                        variant="outline"
-                        for="enableRadio"
-                      >
-                        Enabled
-                      </label>
-                      <input
-                        class="btn-check"
-                        formControlName="status"
-                        type="radio"
-                        value="false"
-                        id="disableRadio"
-                      />
-                      <label
-                        (click)="setMenuItemStatus(false)"
-                        cButton
-                        cFormCheckLabel
-                        color="secondary"
-                        variant="outline"
-                        for="disableRadio"
-                      >
-                        Disabled
-                      </label>                      
-                    </c-button-group>
-                  <!-- </form> -->
-            </c-col>
-        </c-row> 
+        </c-row>         
         <c-row class="mb-3">
             <label cLabel="col" class="col-sm-4">
                 Price :
             </label>
             <c-col sm="8">
-                <input  cFormControl id="priceinput" type="text" formControlName="price"/>
-            </c-col>
+                <c-input-group>
+                <input aria-label="Dollar amount (with dot and two decimal places)" cFormControl/>
+              </c-input-group>
+            </c-col>                       
         </c-row> 
         <c-row class="mb-3">
             <label cLabel="col" class="col-sm-4">
