@@ -5,7 +5,7 @@ import { LoaderService } from './loader.service';
 
 @Injectable()
 export class HttpService {
-  private serviceURL: string = "https://52.66.238.60:8080/";
+  private serviceURL: string = "http://52.66.238.60:8080/";
   constructor(private httpClient: HttpClient, private loaderService: LoaderService) { }
 
   getHTTP(methodName: string): Observable<any> {
