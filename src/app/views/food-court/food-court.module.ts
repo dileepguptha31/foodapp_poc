@@ -17,6 +17,9 @@ import { FoodCourtComponent } from './food-court.component';
 import { FoodCourtViewComponent } from './food-court-view/food-court-view.component';
 import { FoodCounterViewComponent } from './food-counter-view/food-counter-view.component';
 import { FoodCounterFormComponent } from './food-counter-form/food-counter-form.component';
+
+import { HttpService } from '../../services/http.service';
+import { HttpClientModule } from '@angular/common/http';
 const routes: Routes = [
   {
     path: '', component: FoodCourtComponent,
@@ -38,9 +41,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [FoodCourtComponent, FoodCourtFormComponent, FoodCourtViewComponent, FoodCounterViewComponent, FoodCounterFormComponent],
   exports: [],
+  providers: [HttpService],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes), HttpClientModule,
     IconModule, ReactiveFormsModule, FormsModule, CardModule, FormDirective,
     ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent,
     ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective
