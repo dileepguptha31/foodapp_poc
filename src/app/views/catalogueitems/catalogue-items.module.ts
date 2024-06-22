@@ -1,56 +1,46 @@
-import { NgModule } from '@angular/core';
-import { CommonModule, NgStyle } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import {  CatalogueitemsComponent} from './catalogueitems.component';
 import { IconModule } from '@coreui/icons-angular';
 import {
-  AvatarComponent,
-  ButtonDirective,
-  ButtonGroupComponent,
-  CardBodyComponent,
-  CardComponent,
-  CardFooterComponent,
-  CardHeaderComponent,
-  ColComponent,
-  FormCheckLabelDirective,
-  FormControlDirective,
+  ButtonDirective, CardBodyComponent,
+  CardComponent, CardHeaderComponent, CardModule, ColComponent, FormControlDirective,
   FormDirective,
   FormLabelDirective,
-  GridModule,
-  GutterDirective,
-  ModalModule,
-  ProgressBarDirective,
-  ProgressComponent,
-  RowComponent,
-  TableDirective,
-  TextColorDirective
+  GridModule, ModalModule, RowComponent, TableModule, AvatarComponent
 } from '@coreui/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import {CatalogueitemsComponent} from './catalogueitems.component'
+import {CatalogueViewComponent} from './catalogue-view/catalogue-view.component';
+import {MenuItemDetailComponent} from './menu-item-detail/menu-item-detail.component'
+const routes: Routes = [
+  {
+    path: '', component: CatalogueitemsComponent,
+    children: [
+      {
+        path: 'menu-items', component: CatalogueViewComponent,
+        data: { title: $localize`Menu Items` }
+      },
+      // {
+      //   path: 'counter/:id', component: CatalogueViewComponent,
+      //   data: { title: $localize`Food Counter` }
+      // },
+      { path: '', redirectTo: 'menu-items', pathMatch: 'full' }
+    ]
+  },
+];
+
 @NgModule({
-  declarations: [],
+  declarations: [CatalogueViewComponent,CatalogueitemsComponent,MenuItemDetailComponent],
   exports: [],
   imports: [
     CommonModule,
-    // AvatarComponent,
-    ButtonDirective,
-    // ButtonGroupComponent,
-    CardBodyComponent,
-    CardComponent,
-    // CardFooterComponent,
-    // CardHeaderComponent,
-    // ColComponent,
-    // FormCheckLabelDirective,
-    // GridModule,
-    // GutterDirective,
-    ModalModule,
-    // ProgressBarDirective,
-    // ProgressComponent,
-    // RowComponent,
-    // TableDirective,
-    // TextColorDirective
-    RowComponent, ColComponent,
-    ReactiveFormsModule, FormsModule, FormDirective, FormLabelDirective, FormControlDirective, NgStyle
-  ]
+    RouterModule.forChild(routes),
+    IconModule, ReactiveFormsModule, FormsModule, CardModule, FormDirective,
+    ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent,
+    ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective, AvatarComponent
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CatalogueItemsModule { }

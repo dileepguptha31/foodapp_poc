@@ -3,16 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { cilPlus } from '@coreui/icons';
 
 @Component({
-  selector: 'app-menu-item-detail',
-  standalone: true,
-  imports: [],
+  selector: 'app-menu-item-detail',   
   templateUrl: './menu-item-detail.component.html',
   styleUrl: './menu-item-detail.component.scss'
 })
 export class MenuItemDetailComponent {
   menuitemdetailform: FormGroup;
 
-  @Input() menuitemdetail: any;
+  @Input() menuitemdetailformInput: any;
 
   @Output() addNewForm: EventEmitter<string> = new EventEmitter();
   icons = { cilPlus };
@@ -32,7 +30,8 @@ export class MenuItemDetailComponent {
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.cModalToggleButton?.nativeElement.click();
-    const menuitemEditForm: any = changes["menuitemdetail"].currentValue;
+    const menuitemEditForm: any = changes["menuitemdetailformInput"].currentValue;
+    console.log(menuitemEditForm);
     if (!menuitemEditForm.id) {
       return;
     }
@@ -57,6 +56,10 @@ export class MenuItemDetailComponent {
   onKeydownHandler(event: KeyboardEvent) {
     console.log(`escape pressed`);
     this.menuitemdetailform.reset()
+  }
+
+  setMenuItemStatus(status: boolean){
+    
   }
 
   onClearForm() {

@@ -5,7 +5,7 @@ export const routes: Routes = [
     path: '',
     loadComponent: () => import('./catalogueitems.component').then(m => m.CatalogueitemsComponent),
     data: {
-      title: $localize`MainMenu`
+      title: $localize`Main Menu`
     }
   }
 ];
