@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import foodCourtData from './../../../../assets/data/food-court.json';
 import { cilShieldAlt, cilDelete, cilPencil, cilArrowThickRight } from '@coreui/icons';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-food-court-view',
@@ -15,7 +16,7 @@ export class FoodCourtViewComponent {
   public editFoodCourt: any = {};
   private foodCourtDataList: Array<any> = JSON.parse(JSON.stringify(foodCourtData));
   icons = { cilDelete, cilPencil, cilShieldAlt, cilArrowThickRight };
-  constructor(private router: Router, private activeRoute: ActivatedRoute) {
+  constructor(private router: Router, private activeRoute: ActivatedRoute, private httpService: HttpService) {
     this.foodCourtBehaviourSubject = new BehaviorSubject<Array<any>>([]);
   }
 
@@ -23,7 +24,11 @@ export class FoodCourtViewComponent {
     return this.foodCourtBehaviourSubject.asObservable();
   }
   ngOnInit(): void {
-    this.foodCourtBehaviourSubject.next(this.foodCourtDataList);
+
+    this.httpService.getHTTP('foodcourt').subscribe((foodCourt: any) => {
+      this.foodCourtDataList = foodCourt;
+      this.foodCourtBehaviourSubject.next(this.foodCourtDataList);
+    })
 
   }
   onAddNewFoodCourt(newFoodCourt: any) {
