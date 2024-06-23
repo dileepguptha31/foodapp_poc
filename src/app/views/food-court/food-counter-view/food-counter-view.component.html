@@ -1,14 +1,6 @@
-<c-card>
+<!-- <c-card>
     <c-card-header>
-        <c-container>
-            <c-row>
-                <c-col>Food Counter</c-col>
-                <c-col class="text-end">
-                    <app-food-counter-form (addNewForm)="onAddCounter($event)"
-                        [counterFormInfo]="editedCounter"></app-food-counter-form>
-                </c-col>
-            </c-row>
-        </c-container>
+       
     </c-card-header>
     <c-card-body>
         <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
@@ -46,4 +38,49 @@
             </tbody>
         </table>
     </c-card-body>
-</c-card>
+</c-card> -->
+
+
+<c-container>
+    <c-row>
+        <c-col>Food Counter</c-col>
+        <c-col class="text-end">
+            <app-food-counter-form (addNewForm)="onAddCounter($event)"
+                [counterFormInfo]="editCounter"></app-food-counter-form>
+        </c-col>
+    </c-row>
+</c-container>
+
+<table mat-table [dataSource]="(foodCourt$ | async)" class="mat-elevation-z8" multiTemplateDataRows>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="COUNTER_NAME">
+        <th mat-header-cell *matHeaderCellDef> Counter Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.COUNTER_NAME}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="COUNTER_DESCl">
+        <th mat-header-cell *matHeaderCellDef> Counter Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.COUNTER_DESCl}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="COUSINE">
+        <th mat-header-cell *matHeaderCellDef> Cousine </th>
+        <td mat-cell *matCellDef="let element"> {{element.COUSINE}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Edit">
+        <th mat-header-cell *matHeaderCellDef> Edit </th>
+        <td mat-cell *matCellDef="let element" (click)="onEdit(element)"><svg [cIcon]="icons.cilPencil"
+                size="sm "></svg>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="colDefs"></tr>
+    <tr mat-row *matRowDef="let element; columns: colDefs;">
+</table>

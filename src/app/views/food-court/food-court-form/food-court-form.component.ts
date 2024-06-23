@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { cilPlus } from '@coreui/icons';
+import { FoodCourt } from 'src/app/models/food-court.model';
 
 @Component({
   selector: 'app-food-court-form',
@@ -11,7 +12,7 @@ export class FoodCourtFormComponent implements OnChanges {
 
   foodCourtForm: FormGroup;
 
-  @Input() foodCourtFormInfo: any;
+  @Input() foodCourtFormInfo!: FoodCourt;
 
   @Output() addNewForm: EventEmitter<string> = new EventEmitter();
   icons = { cilPlus };
@@ -31,19 +32,19 @@ export class FoodCourtFormComponent implements OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.cModalToggleButton?.nativeElement.click();
-    const footCourtEditForm: any = changes["foodCourtFormInfo"].currentValue;
-    if (!footCourtEditForm.id) {
+
+    if (!this.foodCourtFormInfo?._ID) {
       return;
     }
     this.foodCourtForm.setValue({
-      id: footCourtEditForm.id,
-      foodCourtName: footCourtEditForm.foodCourtName,
-      buildingName: footCourtEditForm.buildingName,
-      streetName: footCourtEditForm.streetName,
-      city: footCourtEditForm.city,
-      pincode: footCourtEditForm.pincode,
-      state: footCourtEditForm.state,
-      country: footCourtEditForm.country,
+      id: this.foodCourtFormInfo._ID,
+      foodCourtName: this.foodCourtFormInfo.FOOD_COURT_NAME,
+      buildingName: this.foodCourtFormInfo.BUILDING_NAME,
+      streetName: this.foodCourtFormInfo.STREET_NAME,
+      city: this.foodCourtFormInfo.CITY,
+      pincode: this.foodCourtFormInfo.PINCODE,
+      state: this.foodCourtFormInfo.STATE,
+      country: this.foodCourtFormInfo.COUNTRY,
     })
   }
 
