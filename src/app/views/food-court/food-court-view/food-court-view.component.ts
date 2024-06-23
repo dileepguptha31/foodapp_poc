@@ -7,7 +7,7 @@ import { HttpService } from 'src/app/services/http.service';
 import { ColDef, GridOptions } from 'ag-grid-community';
 import { FoodCourt } from 'src/app/models/food-court.model'
 import { DetailCellRenderer } from '../food-counter-view/food-counter-view'
-import { foodCourtColDef, foodCourtDisplayColumn } from 'src/app/models/table-column-def';
+import { foodCourtDisplayColumn } from 'src/app/models/table-column-def';
 
 @Component({
   selector: 'app-food-court-view',
