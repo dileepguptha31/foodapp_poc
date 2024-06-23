@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import { cilShieldAlt, cilDelete, cilPencil, cilArrowThickRight } from '@coreui/icons';
 import { BehaviorSubject, Observable } from 'rxjs';
 import counderData from './../../../../assets/data/counter.json';
-import { HttpService } from 'src/app/services/http.service';
-import { FoodCounter } from 'src/app/models/food-counter.model';
-import { foodCounterDisplayColumn } from 'src/app/models/table-column-def';
 
 @Component({
   selector: 'app-food-counter-view',
@@ -12,70 +9,55 @@ import { foodCounterDisplayColumn } from 'src/app/models/table-column-def';
   styleUrl: './food-counter-view.component.scss'
 })
 export class FoodCounterViewComponent {
-  private counterBehaviourSubject: BehaviorSubject<Array<FoodCounter>>;
-  public editedCounterData: FoodCounter = <FoodCounter>{};
-  private counterDataList: Array<FoodCounter> = [];
+  private counterBehaviourSubject: BehaviorSubject<Array<any>>;
+  public editedCounter: any = {};
+  private counterDataList: Array<any> = JSON.parse(JSON.stringify(counderData));
   icons = { cilDelete, cilPencil, cilShieldAlt, cilArrowThickRight };
 
-  public expandedElement!: FoodCounter;
-  constructor(private httpService: HttpService) {
+  constructor() {
     this.counterBehaviourSubject = new BehaviorSubject<Array<any>>([]);
   }
 
-  get foodCourt$(): Observable<Array<FoodCounter>> {
+  get foodCourt$(): Observable<Array<any>> {
     return this.counterBehaviourSubject.asObservable();
   }
-  get colDefs() {
-    return foodCounterDisplayColumn;
-  }
-
-  get editCounter(): FoodCounter {
-    return this.editedCounterData;
-  }
-
   ngOnInit(): void {
-
-    this.httpService.getHTTP('foodCounter ').subscribe((foodCourts: FoodCounter[]) => {
-      this.counterDataList = foodCourts;
-      this.counterBehaviourSubject.next(this.counterDataList);
-    })
-
+    this.counterBehaviourSubject.next(this.counterDataList);
   }
-  onAddCounter(newCounter: FoodCounter) {
-    // if (newCounter.id == -1) {
-    //   newCounter.id = this.counterDataList.length + 1;
-    // }
+  onAddCounter(newCounter: any) {
+    if (newCounter.id == -1) {
+      newCounter.id = this.counterDataList.length + 1;
+    }
 
-    // let changed = false;
-    // for (let index = 0; index < this.counterDataList.length; index++) {
-    //   const element = this.counterDataList[index];
-    //   if (element.id == newCounter.id) {
-    //     this.counterDataList[index] = newCounter;
-    //     changed = true;
-    //   }
-    // }
+    let changed = false;
+    for (let index = 0; index < this.counterDataList.length; index++) {
+      const element = this.counterDataList[index];
+      if (element.id == newCounter.id) {
+        this.counterDataList[index] = newCounter;
+        changed = true;
+      }
+    }
 
-    // if (!changed) {
-    //   this.counterDataList.push(newCounter);
-    // }
+    if (!changed) {
+      this.counterDataList.push(newCounter);
+    }
 
-    // this.counterBehaviourSubject.next(this.counterDataList);
+    this.counterBehaviourSubject.next(this.counterDataList);
   }
 
   onEdit(data: any) {
-    console.log('selectec outner')
-    this.editedCounterData = data;
+    this.editedCounter = data;
   }
 
   onDelete(id: number) {
-    // const counterList: Array<any> = [];
-    // for (let index = 0; index < this.counterDataList.length; index++) {
-    //   const element = this.counterDataList[index];
-    //   if (element.id !== id) {
-    //     counterList.push(element);
-    //   }
-    // }
-    // this.counterDataList = counterList;
-    // this.counterBehaviourSubject.next(this.counterDataList);
+    const counterList: Array<any> = [];
+    for (let index = 0; index < this.counterDataList.length; index++) {
+      const element = this.counterDataList[index];
+      if (element.id !== id) {
+        counterList.push(element);
+      }
+    }
+    this.counterDataList = counterList;
+    this.counterBehaviourSubject.next(this.counterDataList);
   }
 }

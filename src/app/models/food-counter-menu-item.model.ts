@@ -2,10 +2,10 @@ interface foodcountermenuitem{
     _ID:number,
     FOOD_COUNTER_MENU_ID:number, 
     FOOD_COUNTER_MENU_ITcol:string, 
-    STATUS:boolean, 
+    STATUS:string, 
     PRICE:number, 
     CGST:number, 
     SGST:number, 
-    SERVING_SIZE:number, 
+    SERVING_SIZE:string, 
     CATALOG_ITEM:number
 }
