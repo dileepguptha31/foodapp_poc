@@ -1,7 +1,7 @@
 <p>spinner works!</p>
-<div class="spinner-container">
+<div class="spinner-container" *ngIf="(loader | async)">
     <div class="spinner-view">
-        <div class="lds-ripple" *ngIf="(loader | async)">
+        <div class="lds-ripple" >
             <div></div>
             <div></div>
         </div>
