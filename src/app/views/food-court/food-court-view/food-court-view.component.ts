@@ -1,7 +1,7 @@
 import { Component, ViewChild, viewChild } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import foodCourtData from './../../../../assets/data/food-court.json';
-import { cilShieldAlt, cilDelete, cilPencil, cilArrowThickRight } from '@coreui/icons';
+import { cilShieldAlt, cilDelete, cilPencil, cilArrowThickRight, cilArrowThickBottom, cilArrowThickTop } from '@coreui/icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { ColDef, GridOptions } from 'ag-grid-community';
@@ -30,7 +30,7 @@ export class FoodCourtViewComponent {
   }
 
   get icons() {
-    return { cilDelete, cilPencil, cilShieldAlt, cilArrowThickRight }
+    return { cilDelete, cilPencil, cilShieldAlt, cilArrowThickRight, cilArrowThickBottom, cilArrowThickTop }
   }
 
   get colDefs() {
@@ -41,55 +41,15 @@ export class FoodCourtViewComponent {
     return this.editFoodCourtData;
   }
 
-  get gridOptions(): GridOptions {
-    return {
-      autoSizeStrategy: {
-        type: 'fitGridWidth',
-        defaultMinWidth: 100,
-      }, defaultColDef: {
-        resizable: false,
-      }, pagination: true,
-      masterDetail: true,
-      detailCellRenderer: DetailCellRenderer,
-      onFirstDataRendered: (params) => {
-        setTimeout(() => {
-          params.api.getDisplayedRowAtIndex(1)?.setExpanded(true);
-        }, 0);
-      },
-    }
-  }
-
-
   ngOnInit(): void {
-
     this.httpService.getHTTP('foodcourt').subscribe((foodCourts: FoodCourt[]) => {
       this.foodCourtDataList = foodCourts;
       this.foodCourtBehaviourSubject.next(this.foodCourtDataList);
     })
-
   }
 
 
   onAddNewFoodCourt(newFoodCourt: any) {
-    // if (newFoodCourt.id == -1) {
-    //   newFoodCourt.id = this.foodCourtDataList.length + 1;
-    // }
-
-    // let changed = false;
-    // for (let index = 0; index < this.foodCourtDataList.length; index++) {
-    //   const element = this.foodCourtDataList[index];
-    //   if (element.id == newFoodCourt.id) {
-    //     this.foodCourtDataList[index] = newFoodCourt;
-    //     changed = true;
-    //   }
-    // }
-
-    // if (!changed) {
-    //   this.foodCourtDataList.push(newFoodCourt);
-    // }
-
-    // this.foodCourtBehaviourSubject.next(this.foodCourtDataList);
-
     const foodCounter = <FoodCourt>{
       FOOD_COURT_NAME: newFoodCourt.foodCourtName,
       BUILDING_NAME: newFoodCourt.buildingName,
@@ -98,6 +58,8 @@ export class FoodCourtViewComponent {
       PINCODE: newFoodCourt.pincode,
       STATE: newFoodCourt.state,
       COUNTRY: newFoodCourt.country,
+      BUILDING_ID: 1,
+      COMPANY_ID: 1
     }
 
     this.httpService.postHTTP('foodcourt', foodCounter).subscribe(data => {
@@ -121,7 +83,12 @@ export class FoodCourtViewComponent {
     // this.foodCourtBehaviourSubject.next(this.foodCourtDataList);
   }
 
-  onView(id: number) {
-    this.router.navigate(['counter/1'], { relativeTo: this.activeRoute.parent });
+  onView(element: FoodCourt) {
+    //this.router.navigate(['counter/1'], { relativeTo: this.activeRoute.parent });
+    this.expandedElement = this.expandedElement == element ? <FoodCourt>{} : element;
+  }
+
+  rowSelect(data: any) {
+    console.log(data)
   }
 }

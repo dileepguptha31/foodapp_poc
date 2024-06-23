@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, tap, throwError } from 'rxjs';
+import { Observable, catchError, delay, tap, throwError } from 'rxjs';
 import { LoaderService } from './loader.service';
 
 @Injectable()
@@ -12,6 +12,7 @@ export class HttpService {
     this.loaderService.loaderStart();
     return this.httpClient.get(this.serviceURL + methodName)
       .pipe(
+        delay(200),
         tap(() => this.loaderService.loaderEnd()),
         catchError(() => this.errorHandler())
       );
@@ -20,14 +21,15 @@ export class HttpService {
   postHTTP(methodName: string, body: any): Observable<any> {
     this.loaderService.loaderStart();
     return this.httpClient.post(this.serviceURL + methodName, body)
-      .pipe(tap(() => this.loaderService.loaderEnd()),
+      .pipe(delay(200),
+        tap(() => this.loaderService.loaderEnd()),
         catchError(() => this.errorHandler()));
   }
 
   getHTTPbyId(methodName: string, id: number): Observable<any> {
     this.loaderService.loaderStart();
     return this.httpClient.get(this.serviceURL + methodName + "/" + id)
-      .pipe(tap(() => this.loaderService.loaderEnd()),
+      .pipe(delay(1000), tap(() => this.loaderService.loaderEnd()),
         catchError(() => this.errorHandler()));
   }
 
