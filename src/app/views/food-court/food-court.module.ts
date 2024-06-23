@@ -17,9 +17,12 @@ import { FoodCourtComponent } from './food-court.component';
 import { FoodCourtViewComponent } from './food-court-view/food-court-view.component';
 import { FoodCounterViewComponent } from './food-counter-view/food-counter-view.component';
 import { FoodCounterFormComponent } from './food-counter-form/food-counter-form.component';
+import { CellIconRendererComponent } from '../common/cell-icon-renderer/cell-icon-renderer.component';
 
 import { HttpService } from '../../services/http.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AgGridAngular } from 'ag-grid-angular';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 const routes: Routes = [
   {
     path: '', component: FoodCourtComponent,
@@ -39,7 +42,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [FoodCourtComponent, FoodCourtFormComponent, FoodCourtViewComponent, FoodCounterViewComponent, FoodCounterFormComponent],
+  declarations: [FoodCourtComponent, FoodCourtFormComponent, FoodCourtViewComponent, FoodCounterViewComponent, FoodCounterFormComponent, CellIconRendererComponent],
   exports: [],
   providers: [HttpService],
   imports: [
@@ -47,7 +50,8 @@ const routes: Routes = [
     RouterModule.forChild(routes), HttpClientModule,
     IconModule, ReactiveFormsModule, FormsModule, CardModule, FormDirective,
     ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent,
-    ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective
+    ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective,
+    AgGridAngular, FontAwesomeModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
