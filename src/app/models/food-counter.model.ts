@@ -9,7 +9,7 @@
 // ]
 
 interface foodcounter{
-    FOOD_COUNTER_ID: number,
+    _ID: number,
     COUNTER_NAME: string,
     COUNTER_DESCl: string,
     COUSINE: string,
