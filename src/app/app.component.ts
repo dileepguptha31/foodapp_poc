@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from './icons/icon-subset';
@@ -8,13 +8,15 @@ import { SpinnerModule } from '@coreui/angular';
 import { LoaderService } from './services/loader.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { SpinnerComponent } from './views/common/spinner/spinner.component';
 
 @Component({
   selector: 'app-root',
-  template: `<div class="spinner-view"><div class="lds-ripple" *ngIf="(loader | async)"><div></div><div></div></div></div> <router-outlet></router-outlet>`,
-  styleUrls: ['./app.component.scss'],
+  template: `  <router-outlet></router-outlet> <app-spinner></app-spinner>`,
+  styles: '',
   standalone: true,
-  imports: [RouterOutlet, SpinnerModule, CommonModule]
+  imports: [RouterOutlet, SpinnerModule, CommonModule, SpinnerComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppComponent implements OnInit {
   title = 'CoreUI Angular Admin Template';
