@@ -8,7 +8,7 @@ import {
   CardComponent, CardHeaderComponent, CardModule, ColComponent, FormControlDirective,
   FormDirective,
   FormLabelDirective,
-  GridModule, ModalModule, RowComponent, TableModule
+  GridModule, ModalModule, RowComponent
 } from '@coreui/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -23,6 +23,21 @@ import { HttpService } from '../../services/http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AgGridAngular } from 'ag-grid-angular';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { CalendarModule } from 'primeng/calendar';
+import { SliderModule } from 'primeng/slider';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { InputTextModule } from 'primeng/inputtext';
+import { BrowserModule } from '@angular/platform-browser';
+import { MatTableModule } from '@angular/material/table';
+
 const routes: Routes = [
   {
     path: '', component: FoodCourtComponent,
@@ -50,8 +65,21 @@ const routes: Routes = [
     RouterModule.forChild(routes), HttpClientModule,
     IconModule, ReactiveFormsModule, FormsModule, CardModule, FormDirective,
     ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent,
-    ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective,
-    AgGridAngular, FontAwesomeModule
+    ModalModule, GridModule, RowComponent, ColComponent, FormLabelDirective, FormControlDirective,
+    MatTableModule,
+    TableModule,
+    CalendarModule,
+    SliderModule,
+    DialogModule,
+    MultiSelectModule,
+    ContextMenuModule,
+    DropdownModule,
+    ButtonModule,
+    ToastModule,
+    InputTextModule,
+    ProgressBarModule,
+    HttpClientModule,
+    FormsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
