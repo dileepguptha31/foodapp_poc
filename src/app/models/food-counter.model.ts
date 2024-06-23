@@ -1,3 +1,13 @@
+// [
+//     {
+//         "FOOD_COUNTER_ID": 1,
+//         "COUNTER_NAME": "JP Counter 1",
+//         "COUNTER_DESCl": "Servers Breakfast",
+//         "COUSINE": "Italian",
+//         "FOOD_COURT_ID": 1
+//     }
+// ]
+
 interface foodcounter{
     FOOD_COUNTER_ID: number,
     COUNTER_NAME: string,

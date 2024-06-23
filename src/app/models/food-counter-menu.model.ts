@@ -1,6 +1,6 @@
 interface foodcountermenu{
     _ID: number,
-    STATUS : boolean,
+    STATUS : string,
     COUNTER_ID: number,
     BUILDING_ID: number
 }
