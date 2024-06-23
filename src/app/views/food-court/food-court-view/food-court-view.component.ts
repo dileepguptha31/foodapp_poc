@@ -7,7 +7,7 @@ import { HttpService } from 'src/app/services/http.service';
 import { ColDef, GridOptions } from 'ag-grid-community';
 import { FoodCourt } from 'src/app/models/food-court.model'
 import { DetailCellRenderer } from '../food-counter-view/food-counter-view'
-import { foodCourtDisplayColumn } from 'src/app/models/table-column-def';
+import { foodCourtColDef } from 'src/app/models/table-column-def';
 
 @Component({
   selector: 'app-food-court-view',
@@ -15,14 +15,12 @@ import { foodCourtDisplayColumn } from 'src/app/models/table-column-def';
   styleUrl: './food-court-view.component.scss'
 })
 export class FoodCourtViewComponent {
-  private foodCourtBehaviourSubject: BehaviorSubject<Array<FoodCourt>> = new BehaviorSubject<Array<any>>([]);
-  public editFoodCourtData: FoodCourt = <FoodCourt>{};
+  private foodCourtBehaviourSubject: BehaviorSubject<Array<FoodCourt>>;
+  public editFoodCourt: any = {};
   private foodCourtDataList: Array<FoodCourt> = [];
 
-  public expandedElement!: FoodCourt;
-
   constructor(private router: Router, private activeRoute: ActivatedRoute, private httpService: HttpService) {
-    this.foodCourtBehaviourSubject = new BehaviorSubject<Array<any>>(this.foodCourtDataList);
+    this.foodCourtBehaviourSubject = new BehaviorSubject<Array<any>>([]);
   }
 
   get foodCourt$(): Observable<Array<FoodCourt>> {
@@ -34,11 +32,7 @@ export class FoodCourtViewComponent {
   }
 
   get colDefs() {
-    return foodCourtDisplayColumn;
-  }
-
-  get editFoodCourt(): FoodCourt {
-    return this.editFoodCourtData;
+    return foodCourtColDef;
   }
 
   get gridOptions(): GridOptions {
@@ -69,7 +63,11 @@ export class FoodCourtViewComponent {
 
   }
 
-
+  onRefeshCell() {
+    this.colDefs.forEach(element => {
+      element.cellRenderer = () => `<svg cIcon="` + this.icons.cilDelete + `" title="List Icon"></svg>`
+    });
+  }
   onAddNewFoodCourt(newFoodCourt: any) {
     // if (newFoodCourt.id == -1) {
     //   newFoodCourt.id = this.foodCourtDataList.length + 1;
@@ -106,7 +104,7 @@ export class FoodCourtViewComponent {
   }
 
   onEdit(data: any) {
-    this.editFoodCourtData = data;
+    this.editFoodCourt = data;
   }
 
   onDelete(id: number) {

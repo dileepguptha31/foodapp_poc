@@ -1,6 +1,6 @@
 // [
 //     {
-//         "_ID": 1,
+//         "FOOD_COUNTER_ID": 1,
 //         "COUNTER_NAME": "JP Counter 1",
 //         "COUNTER_DESCl": "Servers Breakfast",
 //         "COUSINE": "Italian",
@@ -8,8 +8,8 @@
 //     }
 // ]
 
-export interface FoodCounter {
-    _ID:number,
+interface foodcounter{
+    FOOD_COUNTER_ID: number,
     COUNTER_NAME: string,
     COUNTER_DESCl: string,
     COUSINE: string,

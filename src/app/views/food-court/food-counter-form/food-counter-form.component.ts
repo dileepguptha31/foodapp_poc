@@ -1,7 +1,6 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { cilPlus } from '@coreui/icons';
-import { FoodCounter } from 'src/app/models/food-counter.model';
 
 @Component({
   selector: 'app-food-counter-form',
@@ -11,7 +10,7 @@ import { FoodCounter } from 'src/app/models/food-counter.model';
 export class FoodCounterFormComponent {
   counterForm: FormGroup;
 
-  @Input() counterFormInfo!: FoodCounter;
+  @Input() counterFormInfo: any;
 
   @Output() addNewForm: EventEmitter<string> = new EventEmitter();
   @ViewChild('cModalToggleButton') cModalToggleButton!: ElementRef<HTMLElement>;
@@ -26,18 +25,16 @@ export class FoodCounterFormComponent {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('ch')
     this.cModalToggleButton?.nativeElement.click();
-    if (!this.counterFormInfo?._ID) {
+    const footCourtEditForm: any = changes["counterFormInfo"].currentValue;
+    if (!footCourtEditForm.id) {
       return;
     }
-
-    console.log('ch34')
     this.counterForm.setValue({
-      id: this.counterFormInfo._ID,
-      counterName: this.counterFormInfo.COUNTER_NAME,
-      counterDesc: this.counterFormInfo.COUNTER_DESCl,
-      cousine: this.counterFormInfo.COUSINE,
+      id: footCourtEditForm.id,
+      counterName: footCourtEditForm.counterName,
+      counterDesc: footCourtEditForm.counterDesc,
+      cousine: footCourtEditForm.cousine,
     })
   }
   onSubmit() {
