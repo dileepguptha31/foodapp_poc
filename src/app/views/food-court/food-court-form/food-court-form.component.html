@@ -1,4 +1,5 @@
-<button cButton color="primary" variant="outline" [cModalToggle]="foodCourtFormContentModal.id" size="sm" #cModalToggleButton>
+<button cButton color="primary" variant="outline" [cModalToggle]="foodCourtFormContentModal.id" size="sm"
+    #cModalToggleButton>
     <svg [cIcon]="icons.cilPlus" width="25" title="Shield Icon">
     </svg>Add New Food Court</button>
 
@@ -15,8 +16,7 @@
         <ng-container *ngTemplateOutlet="longContent"></ng-container>
     </c-modal-body>
     <c-modal-footer>
-        <button [cModalToggle]="foodCourtFormContentModal.id" cButton color="secondary"
-            (click)="foodCourtForm.reset()">
+        <button [cModalToggle]="foodCourtFormContentModal.id" cButton color="secondary" (click)="foodCourtForm.reset()">
             Close
         </button>
         <button cButton color="primary" [disabled]="!foodCourtForm.valid" (click)="onSubmit()"

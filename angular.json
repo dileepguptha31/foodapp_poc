@@ -7,7 +7,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "coreui-free-angular-admin-template": {
-      "projectType": "application",      
+      "projectType": "application",
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -29,7 +29,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/scss/styles.scss"
+              "src/scss/styles.scss",
+              "node_modules/ag-grid-community/styles/ag-grid.min.css",
+              "node_modules/ag-grid-community/styles/ag-theme-quartz.min.css"
             ],
             "scripts": [],
             "allowedCommonJsDependencies": []

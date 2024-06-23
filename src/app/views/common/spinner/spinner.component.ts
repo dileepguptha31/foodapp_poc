@@ -12,9 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class SpinnerComponent {
 
-  constructor(
-    private loaderService: LoaderService) { console.log('spinner') }
-
+  constructor(private loaderService: LoaderService) { }
 
   get loader(): Observable<boolean> {
     return this.loaderService.loader$;
