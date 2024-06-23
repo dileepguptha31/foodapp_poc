@@ -1,0 +1,55 @@
+<div class="table-responsive">
+    <table class="table table-hover" striped cTable>
+      <thead>
+        <tr>
+          <th scope="col">Order No</th>
+          <th scope="col">Invoice No</th>
+          <th scope="col">Date</th>
+          <th scope="col">CGST</th>
+          <th scope="col">SGST</th>
+          <th scope="col">Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let item of items">
+          <tr scope="row" (click)="toggleExpand(item)">
+            <td>{{ item.orderno }}</td>
+            <td>{{ item.invoiceno }}</td>
+            <td>{{ item.datetime }}</td>
+            <td>{{ item.cgst }}</td>
+            <td>{{ item.sgst }}</td>
+            <td>{{ item.totalprice }}₹</td>
+            <td>
+              <button class="btn btn-sm btn-primary" (click)="toggleExpand(item)">
+                {{ item.expanded ? 'Collapse' : 'Expand' }}
+              </button>
+            </td>
+          </tr>
+          <tr scope="row" *ngIf="item.expanded">
+            <td colspan="3">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>Name</th>                    
+                    <th>Quantity</th>
+                    <th>CGST</th>
+                    <th>SGST</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let orderitem of item.orderitems">
+                    <td>{{ orderitem.name }}</td>
+                    <td>{{ orderitem.quantity }}</td>
+                    <td>{{ orderitem.cgst }}</td>
+                    <td>{{ orderitem.sgst }}</td>
+                    <td>{{ orderitem.price }}₹</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>

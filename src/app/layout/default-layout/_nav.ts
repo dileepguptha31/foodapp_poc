@@ -28,15 +28,11 @@ export const navItems: INavData[] = [
     name: 'Orders',
     url: '/orders',
     iconComponent: { name: 'cil-cart' },
-  },
+  },  
   {
-    title: true,
-    name: 'Theme'
-  },
-  {
-    name: 'Colors',
-    url: '/theme/colors',
-    iconComponent: { name: 'cil-drop' }
+    name: 'Invoices',
+    url: '/invoices',
+    iconComponent: { name: 'cil-clipboard' }
   },
   {
     name: 'Typography',
