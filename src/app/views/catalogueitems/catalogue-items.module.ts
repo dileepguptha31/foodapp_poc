@@ -4,32 +4,33 @@ import { CommonModule } from '@angular/common';
 import { IconModule } from '@coreui/icons-angular';
 import {
   ButtonDirective,
-  ButtonGroupComponent, 
+  ButtonGroupComponent,
   CardBodyComponent,
-  CardComponent, 
-  CardHeaderComponent, 
-  CardModule, 
+  CardComponent,
+  CardHeaderComponent,
+  CardModule,
   ColComponent,
   FormCheckComponent,
   FormCheckLabelDirective,
-  FormCheckInputDirective, 
+  FormCheckInputDirective,
   FormControlDirective,
   FormDirective,
   FormLabelDirective,
-  GridModule, 
-  ModalModule, 
-  RowComponent, 
-  TableModule, 
-  AvatarComponent,      
+  GridModule,
+  ModalModule,
+  RowComponent,
+  TableModule,
+  AvatarComponent,
 } from '@coreui/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import {CatalogueitemsComponent} from './catalogueitems.component'
-import {CatalogueViewComponent} from './catalogue-view/catalogue-view.component';
-import {MenuItemDetailComponent} from './menu-item-detail/menu-item-detail.component'
+import { CatalogueitemsComponent } from './catalogueitems.component'
+import { CatalogueViewComponent } from './catalogue-view/catalogue-view.component';
+import { MenuItemDetailComponent } from './menu-item-detail/menu-item-detail.component'
 import { HttpService } from '../../services/http.service';
 import { HttpClientModule } from '@angular/common/http';
-import {catalogueitem} from '../../models/catalogue-item.model'
+import { catalogueitem } from '../../models/catalogue-item.model'
+import { MatTableModule } from '@angular/material/table';
 
 const routes: Routes = [
   {
@@ -49,16 +50,17 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [CatalogueViewComponent,CatalogueitemsComponent,MenuItemDetailComponent],
+  declarations: [CatalogueViewComponent, CatalogueitemsComponent, MenuItemDetailComponent],
   exports: [],
-  providers:[HttpService],
+  providers: [HttpService],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),HttpClientModule,
+    RouterModule.forChild(routes), HttpClientModule,
     IconModule, ReactiveFormsModule, FormsModule, CardModule, FormDirective,
     ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent,
-    ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective, AvatarComponent,FormCheckInputDirective,FormCheckComponent,
-    FormCheckLabelDirective 
+    ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective, AvatarComponent, FormCheckInputDirective, FormCheckComponent,
+    FormCheckLabelDirective,
+    MatTableModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

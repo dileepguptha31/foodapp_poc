@@ -3,9 +3,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
 // import mainmenudata from '../../../../assets/data/mainmenu.json'
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
-import {catalogueitem} from '../../../models/catalogue-item.model'
+import { catalogueitem } from '../../../models/catalogue-item.model'
+import { menuItemDisplayColumns } from 'src/app/models/table-column-def';
+import { cilDelete, cilPencil } from '@coreui/icons';
 @Component({
-  selector: 'app-catalogue-view', 
+  selector: 'app-catalogue-view',
   templateUrl: './catalogue-view.component.html',
   styleUrl: './catalogue-view.component.scss',
 })
@@ -21,12 +23,21 @@ export class CatalogueViewComponent {
   get menuItems$(): Observable<catalogueitem[]> {
     return this.menuItemsSubject.asObservable();
   }
+
+  get icons() {
+    return { cilDelete, cilPencil }
+  }
+
+  get colDefs() {
+    return menuItemDisplayColumns;
+  }
+
   ngOnInit(): void {
 
     this.httpService.getHTTP('CatalogueItem').subscribe((foodCourt: any) => {
       this.menuItemList = foodCourt;
       this.menuItemsSubject.next(this.menuItemList);
-    });    
+    });
   }
 
   onAddNewMenu(newFoodCourt: any) {

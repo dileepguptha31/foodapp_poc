@@ -40,7 +40,7 @@ export class FoodCounterViewComponent {
     })
 
   }
-  onAddCounter(newCounter: FoodCounter) {
+  onAddCounter(newCounter: any) {
     // if (newCounter.id == -1) {
     //   newCounter.id = this.counterDataList.length + 1;
     // }

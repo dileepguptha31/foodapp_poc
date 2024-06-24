@@ -1,10 +1,11 @@
-<c-card>
+<!-- <c-card>
     <c-card-header>
         <c-container>
             <c-row>
                 <c-col>Menu</c-col>
                 <c-col class="text-end">
-                    <app-menu-item-detail (addNewForm)="onAddNewMenu($event)" [menuitemdetailformInput]="editmenuitem"></app-menu-item-detail>
+                    <app-menu-item-detail (addNewForm)="onAddNewMenu($event)"
+                        [menuitemdetailformInput]="editmenuitem"></app-menu-item-detail>
                 </c-col>
             </c-row>
         </c-container>
@@ -13,7 +14,7 @@
         <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
             <thead class="text-nowrap text-truncate">
                 <tr>
-                    <th class="bg-body-tertiary text-center ">     </th>
+                    <th class="bg-body-tertiary text-center "> </th>
                     <th class="bg-body-tertiary text-center">Name</th>
                     <th class="bg-body-tertiary text-center">Category</th>
                     <th class="bg-body-tertiary text-center">Sub Category</th>
@@ -27,7 +28,7 @@
                 <tr *ngFor="let item of (menuItems$ | async)">
                     <td class="text-center">
                         <c-avatar [size]="'md'" [src]="item.TEM_FULL_IMAGE" />
-                      </td>
+                    </td>
                     <td class="text-center">
                         <span>{{item.ITEM_NAME}}</span>
                     </td>
@@ -38,14 +39,14 @@
                         <span>{{item.ITEM_SUB_CATEGORY}}</span>
                     </td>
                     <td class="text-center">
-                        <!-- <span>{{item.status}}</span> -->
-                    <c-form-check [switch]="true">
-                        <input cFormCheckInput type="checkbox" id="statusinput" [value]="true"/> 
-                    </c-form-check>
+                       
+                        <c-form-check [switch]="true">
+                            <input cFormCheckInput type="checkbox" id="statusinput" [value]="true" />
+                        </c-form-check>
                     </td>
                     <td class="text-center">
                         <span>₹ {{item.CGST}}</span>
-                    </td>                    
+                    </td>
                     <td class="text-center" (click)="onEdit(item)">
                         <svg cIcon name="cil-pencil" size="xl"></svg>
                     </td>
@@ -55,5 +56,72 @@
                 </tr>
             </tbody>
         </table>
+    </c-card-body>
+</c-card> -->
+
+<c-card>
+    <c-card-header>
+        <c-container>
+            <c-row>
+                <c-col>Menu</c-col>
+                <c-col class="text-end">
+                    <app-menu-item-detail (addNewForm)="onAddNewMenu($event)"
+                        [menuitemdetailformInput]="editmenuitem"></app-menu-item-detail>
+                </c-col>
+            </c-row>
+        </c-container>
+    </c-card-header>
+    <c-card-body>
+
+        <table mat-table [dataSource]="menuItems$" class="mat-elevation-z8" multiTemplateDataRows>
+
+            <ng-container matColumnDef="ITEM_NAME">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.ITEM_NAME}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ITEM_CATEGORY">
+                <th mat-header-cell *matHeaderCellDef> Building Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.ITEM_CATEGORY}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ITEM_SUB_CATEGORY">
+                <th mat-header-cell *matHeaderCellDef> Street </th>
+                <td mat-cell *matCellDef="let element"> {{element.ITEM_SUB_CATEGORY}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Status">
+                <th mat-header-cell *matHeaderCellDef> City </th>
+                <td mat-cell *matCellDef="let element"> {{element.CITY}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="CGST">
+                <th mat-header-cell *matHeaderCellDef> Pincode </th>
+                <td mat-cell *matCellDef="let element"> {{element.CGST}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="STATE">
+                <th mat-header-cell *matHeaderCellDef> State </th>
+                <td mat-cell *matCellDef="let element"> {{element.STATE}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Edit">
+                <th mat-header-cell *matHeaderCellDef> Edit </th>
+                <td mat-cell *matCellDef="let element" (click)="onEdit(element)" class="text-center">
+                    <svg [cIcon]="icons.cilPencil" size="sm "></svg>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Delete">
+                <th mat-header-cell *matHeaderCellDef> Edit </th>
+                <td mat-cell *matCellDef="let element" (click)="onEdit(element)" class="text-center">
+                    <svg [cIcon]="icons.cilPencil" size="sm "></svg>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="colDefs"></tr>
+            <tr mat-row *matRowDef="let element; columns: colDefs;">
+        </table>
+
     </c-card-body>
 </c-card>
