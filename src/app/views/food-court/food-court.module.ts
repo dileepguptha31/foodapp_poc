@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FoodCourtFormComponent } from './food-court-form/food-court-form.component';
@@ -8,7 +8,7 @@ import {
   CardComponent, CardHeaderComponent, CardModule, ColComponent, FormControlDirective,
   FormDirective,
   FormLabelDirective,
-  GridModule, ModalModule, RowComponent, TableModule
+  GridModule, ModalModule, RowComponent
 } from '@coreui/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -23,6 +23,10 @@ import { HttpService } from '../../services/http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AgGridAngular } from 'ag-grid-angular';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { MatTableModule } from '@angular/material/table';
+
 const routes: Routes = [
   {
     path: '', component: FoodCourtComponent,
@@ -50,9 +54,11 @@ const routes: Routes = [
     RouterModule.forChild(routes), HttpClientModule,
     IconModule, ReactiveFormsModule, FormsModule, CardModule, FormDirective,
     ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent,
-    ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective,
-    AgGridAngular, FontAwesomeModule
+    ModalModule, GridModule, RowComponent, ColComponent, FormLabelDirective, FormControlDirective,
+    MatTableModule,
+    HttpClientModule,
+    FormsModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class FoodCourtModule { }

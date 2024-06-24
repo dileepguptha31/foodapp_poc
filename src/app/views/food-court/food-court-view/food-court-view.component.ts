@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, viewChild } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { cilShieldAlt, cilDelete, cilPencil, cilArrowThickRight, cilArrowThickBottom, cilArrowThickTop } from '@coreui/icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
+import { ColDef, GridOptions } from 'ag-grid-community';
 import { FoodCourt } from 'src/app/models/food-court.model'
+import { DetailCellRenderer } from '../food-counter-view/food-counter-view'
 import { foodCourtDisplayColumn } from 'src/app/models/table-column-def';
 
 @Component({
@@ -12,13 +14,14 @@ import { foodCourtDisplayColumn } from 'src/app/models/table-column-def';
   styleUrl: './food-court-view.component.scss'
 })
 export class FoodCourtViewComponent {
-  private foodCourtBehaviourSubject: BehaviorSubject<Array<FoodCourt>>;
-  public editFoodCourt: any = {};
+  private foodCourtBehaviourSubject: BehaviorSubject<Array<FoodCourt>> = new BehaviorSubject<Array<any>>([]);
+  public editFoodCourtData: FoodCourt = <FoodCourt>{};
   private foodCourtDataList: Array<FoodCourt> = [];
 
   public expandedElement!: FoodCourt;
+
   constructor(private router: Router, private activeRoute: ActivatedRoute, private httpService: HttpService) {
-    this.foodCourtBehaviourSubject = new BehaviorSubject<Array<any>>([]);
+    this.foodCourtBehaviourSubject = new BehaviorSubject<Array<any>>(this.foodCourtDataList);
   }
 
   get foodCourt$(): Observable<Array<FoodCourt>> {
@@ -59,7 +62,7 @@ export class FoodCourtViewComponent {
   }
 
   onEdit(data: any) {
-    this.editFoodCourt = data;
+    this.editFoodCourtData = data;
   }
 
   onDelete(id: number) {
