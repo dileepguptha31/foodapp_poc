@@ -4,32 +4,34 @@ import { CommonModule } from '@angular/common';
 import { IconModule } from '@coreui/icons-angular';
 import {
   ButtonDirective,
-  ButtonGroupComponent, 
+  ButtonGroupComponent,
   CardBodyComponent,
-  CardComponent, 
-  CardHeaderComponent, 
-  CardModule, 
+  CardComponent,
+  CardHeaderComponent,
+  CardModule,
   ColComponent,
   FormCheckComponent,
   FormCheckLabelDirective,
-  FormCheckInputDirective, 
+  FormCheckInputDirective,
   FormControlDirective,
   FormDirective,
   FormLabelDirective,
-  GridModule, 
-  ModalModule, 
-  RowComponent, 
-  TableModule, 
-  AvatarComponent,      
+  GridModule,
+  ModalModule,
+  RowComponent,
+  TableModule,
+  AvatarComponent,
 } from '@coreui/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { InvoiceComponent } from './invoice.component';
 import { InvoiceListViewComponent } from './invoice-list-view/invoice-list-view.component';
+import { InvoiceDetailViewComponent } from './invoice-detail-view/invoice-detail-view.component';
 
 import { HttpService } from '../../services/http.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
 const routes: Routes = [
   {
     path: '', component: InvoiceComponent,
@@ -37,26 +39,27 @@ const routes: Routes = [
       {
         path: 'invoices', component: InvoiceListViewComponent,
         data: { title: `Invoices` }
-      },      
+      },
       { path: '', redirectTo: 'invoices', pathMatch: 'full' }
     ]
   },
 ];
 
 @NgModule({
-    declarations: [InvoiceComponent, InvoiceListViewComponent],
-    providers: [HttpService],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),HttpClientModule,
-        IconModule, ReactiveFormsModule, FormsModule, CardModule, FormDirective,
-        ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent,
-        ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective, AvatarComponent,FormCheckInputDirective,FormCheckComponent,
-        FormCheckLabelDirective 
-      ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  declarations: [InvoiceComponent, InvoiceListViewComponent, InvoiceDetailViewComponent],
+  providers: [HttpService],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes), HttpClientModule,
+    IconModule, ReactiveFormsModule, FormsModule, CardModule, FormDirective,
+    ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent,
+    ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective, AvatarComponent, FormCheckInputDirective, FormCheckComponent,
+    FormCheckLabelDirective,
+    MatTableModule
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 }
 )
-export class invoiceModule{
+export class invoiceModule {
 
 }
