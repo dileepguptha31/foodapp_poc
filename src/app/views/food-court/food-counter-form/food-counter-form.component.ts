@@ -13,7 +13,7 @@ export class FoodCounterFormComponent {
 
   @Input() counterFormInfo!: FoodCounter;
 
-  @Output() addNewForm: EventEmitter<string> = new EventEmitter();
+  @Output() addNewForm: EventEmitter<FoodCounter> = new EventEmitter();
   @ViewChild('cModalToggleButton') cModalToggleButton!: ElementRef<HTMLElement>;
   icons = { cilPlus };
   constructor(private formBuilder: FormBuilder) {
@@ -39,7 +39,13 @@ export class FoodCounterFormComponent {
     })
   }
   onSubmit() {
-    this.addNewForm.emit(this.counterForm.value);
+    const foodCounter = <FoodCounter>{
+      COUNTER_NAME: this.counterForm.value['counterName'],
+      COUNTER_DESCl: this.counterForm.value['counterDesc'],
+      COUSINE: this.counterForm.value['cousine'],
+    }
+
+    this.addNewForm.emit(foodCounter);
     this.counterForm.reset();
   }
 

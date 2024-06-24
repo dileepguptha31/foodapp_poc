@@ -67,7 +67,7 @@
             <ng-container matColumnDef="expandedDetail">
                 <td mat-cell *matCellDef="let element" [attr.colspan]="colDefs.length">
                     <div class="example-element-detail" *ngIf="element?._ID == expandedElement?._ID">
-                        <app-food-counter-view></app-food-counter-view>
+                        <app-food-counter-view [foodCourt]="element"></app-food-counter-view>
                     </div>
                 </td>
             </ng-container>

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { cilShieldAlt, cilDelete, cilPencil, cilArrowThickRight } from '@coreui/icons';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
 import { FoodCounter } from 'src/app/models/food-counter.model';
 import { foodCounterDisplayColumn } from 'src/app/models/table-column-def';
+import { FoodCourt } from 'src/app/models/food-court.model';
 
 @Component({
   selector: 'app-food-counter-view',
@@ -17,6 +18,8 @@ export class FoodCounterViewComponent {
   icons = { cilDelete, cilPencil, cilShieldAlt, cilArrowThickRight };
 
   public expandedElement!: FoodCounter;
+
+  @Input('foodCourt') foodCourt!: FoodCourt;
   constructor(private httpService: HttpService) {
     this.counterBehaviourSubject = new BehaviorSubject<Array<any>>([]);
   }
@@ -40,25 +43,15 @@ export class FoodCounterViewComponent {
     })
 
   }
-  onAddCounter(newCounter: any) {
-    // if (newCounter.id == -1) {
-    //   newCounter.id = this.counterDataList.length + 1;
-    // }
+  onAddCounter(newCounter: FoodCounter) {
 
-    // let changed = false;
-    // for (let index = 0; index < this.counterDataList.length; index++) {
-    //   const element = this.counterDataList[index];
-    //   if (element.id == newCounter.id) {
-    //     this.counterDataList[index] = newCounter;
-    //     changed = true;
-    //   }
-    // }
+    newCounter._ID = this.counterDataList.length + 1;
+    newCounter.FOOD_COURT_ID = this.foodCourt._ID;
 
-    // if (!changed) {
-    //   this.counterDataList.push(newCounter);
-    // }
-
-    // this.counterBehaviourSubject.next(this.counterDataList);
+    console.log(newCounter)
+    this.httpService.postHTTP('foodcourt', newCounter).subscribe(data => {
+      console.log(data)
+    });
   }
 
   onEdit(data: any) {
