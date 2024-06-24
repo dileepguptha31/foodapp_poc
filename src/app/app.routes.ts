@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
+import { AuthService } from './services/auth.service';
+import {AuthGuard} from './auth-guard'
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -15,23 +17,28 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'dashboard',
+        path: 'dashboard', 
+        canActivate : [AuthGuard],
         loadChildren: () => import('./views/dashboard/routes').then((m) => m.routes)
       },
       {
         path: 'main-menu',
+        canActivate : [AuthGuard],
         loadChildren: () => import('./views/catalogueitems/catalogue-items.module').then((m) => m.CatalogueItemsModule)
       },
       {
         path: 'food-counter',
+        canActivate : [AuthGuard],
         loadChildren: () => import('./views/food-court/food-court.module').then(m => m.FoodCourtModule)
       },
       {
         path: 'orders',
+        canActivate : [AuthGuard],
         loadChildren: () => import('./views/orders/orders.module').then(m => m.OrdersModule)
       },
       {
         path: 'invoices',
+        canActivate : [AuthGuard],
         loadChildren: () => import('./views/invoice/invoice.module').then(m => m.invoiceModule)
       },
       {
@@ -100,5 +107,5 @@ export const routes: Routes = [
       title: 'Register Page'
     }
   },
-  { path: '**', redirectTo: 'dashboard' }
+  { path: '**', redirectTo: 'login' }
 ];

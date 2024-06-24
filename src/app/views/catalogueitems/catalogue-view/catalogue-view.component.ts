@@ -22,13 +22,13 @@ export class CatalogueViewComponent {
     return this.menuItemsSubject.asObservable();
   }
   ngOnInit(): void {
-    // this.menuItemsSubject.next(this.menuItemList);
 
     this.httpService.getHTTP('CatalogueItem').subscribe((foodCourt: any) => {
       this.menuItemList = foodCourt;
       this.menuItemsSubject.next(this.menuItemList);
-    })
+    });    
   }
+
   onAddNewMenu(newFoodCourt: any) {
     if (newFoodCourt._ID == -1) {
       newFoodCourt._ID = this.menuItemList.length + 1;

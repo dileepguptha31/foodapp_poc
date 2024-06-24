@@ -20,12 +20,12 @@ export class MenuItemDetailComponent {
     this.menuitemdetailform = this.formBuilder.group({
       id: [-1],
       name: ['', Validators.required],
-      description: ['', Validators.required],
+      description: ['', Validators.nullValidator],
       category: ['', Validators.required],
-      subcategory: ['', Validators.required],
+      subcategory: ['', Validators.nullValidator],
       status: ['', Validators.required],
       price: ['', Validators.required],
-      image: ['', Validators.required],
+      image: ['', Validators.nullValidator],
     })
   }
   ngOnChanges(changes: SimpleChanges): void {
