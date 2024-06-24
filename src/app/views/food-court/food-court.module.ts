@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FoodCourtFormComponent } from './food-court-form/food-court-form.component';
@@ -53,6 +53,6 @@ const routes: Routes = [
     ModalModule, GridModule, RowComponent, ColComponent, TableModule, FormLabelDirective, FormControlDirective,
     AgGridAngular, FontAwesomeModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class FoodCourtModule { }

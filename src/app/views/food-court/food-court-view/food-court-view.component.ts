@@ -1,13 +1,10 @@
-import { Component, ViewChild, viewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import foodCourtData from './../../../../assets/data/food-court.json';
 import { cilShieldAlt, cilDelete, cilPencil, cilArrowThickRight, cilArrowThickBottom, cilArrowThickTop } from '@coreui/icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
-import { ColDef, GridOptions } from 'ag-grid-community';
 import { FoodCourt } from 'src/app/models/food-court.model'
-import { DetailCellRenderer } from '../food-counter-view/food-counter-view'
-import { foodCourtColDef } from 'src/app/models/table-column-def';
+import { foodCourtDisplayColumn } from 'src/app/models/table-column-def';
 
 @Component({
   selector: 'app-food-court-view',
@@ -19,6 +16,7 @@ export class FoodCourtViewComponent {
   public editFoodCourt: any = {};
   private foodCourtDataList: Array<FoodCourt> = [];
 
+  public expandedElement!: FoodCourt;
   constructor(private router: Router, private activeRoute: ActivatedRoute, private httpService: HttpService) {
     this.foodCourtBehaviourSubject = new BehaviorSubject<Array<any>>([]);
   }
@@ -32,7 +30,7 @@ export class FoodCourtViewComponent {
   }
 
   get colDefs() {
-    return foodCourtColDef;
+    return foodCourtDisplayColumn;
   }
 
   ngOnInit(): void {
@@ -42,11 +40,6 @@ export class FoodCourtViewComponent {
     })
   }
 
-  onRefeshCell() {
-    this.colDefs.forEach(element => {
-      element.cellRenderer = () => `<svg cIcon="` + this.icons.cilDelete + `" title="List Icon"></svg>`
-    });
-  }
   onAddNewFoodCourt(newFoodCourt: any) {
     const foodCounter = <FoodCourt>{
       FOOD_COURT_NAME: newFoodCourt.foodCourtName,
