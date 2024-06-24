@@ -8,6 +8,7 @@
           <th scope="col">CGST</th>
           <th scope="col">SGST</th>
           <th scope="col">Total Price</th>
+          <th scope="col"> </th>
         </tr>
       </thead>
       <tbody>
@@ -20,9 +21,12 @@
             <td>{{ item.sgst }}</td>
             <td>{{ item.totalprice }}₹</td>
             <td>
-              <button class="btn btn-sm btn-primary" (click)="toggleExpand(item)">
-                {{ item.expanded ? 'Collapse' : 'Expand' }}
-              </button>
+              <!-- <svg cIcon name="{{ item.expanded ? 'cil-chevron-circle-up-alt' : 'cil-chevron-circle-down-alt' }}" (click)="toggleExpand(item)"></svg> -->
+              <!-- <svg cIcon name="cilChevronCircleUpAlt" (click)="toggleExpand(item)" *ngIf="item.expanded"></svg>
+              <svg cIcon name="cilChevronCircleDownAlt" (click)="toggleExpand(item)" *ngIf="!item.expanded"></svg> -->
+              <label >
+                {{ item.expanded ? '▼' : '▲' }}
+              </label>
             </td>
           </tr>
           <tr scope="row" *ngIf="item.expanded">
@@ -32,8 +36,8 @@
                   <tr>
                     <th>Name</th>                    
                     <th>Quantity</th>
-                    <th>CGST</th>
-                    <th>SGST</th>
+                    <!-- <th>CGST</th>
+                    <th>SGST</th> -->
                     <th>Price</th>
                   </tr>
                 </thead>
@@ -41,8 +45,8 @@
                   <tr *ngFor="let orderitem of item.orderitems">
                     <td>{{ orderitem.name }}</td>
                     <td>{{ orderitem.quantity }}</td>
-                    <td>{{ orderitem.cgst }}</td>
-                    <td>{{ orderitem.sgst }}</td>
+                    <!-- <td>{{ orderitem.cgst }}</td>
+                    <td>{{ orderitem.sgst }}</td> -->
                     <td>{{ orderitem.price }}₹</td>
                   </tr>
                 </tbody>
