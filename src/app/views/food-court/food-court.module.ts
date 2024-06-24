@@ -21,10 +21,6 @@ import { CellIconRendererComponent } from '../common/cell-icon-renderer/cell-ico
 
 import { HttpService } from '../../services/http.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AgGridAngular } from 'ag-grid-angular';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
 import { MatTableModule } from '@angular/material/table';
 
 const routes: Routes = [
