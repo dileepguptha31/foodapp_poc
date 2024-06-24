@@ -34,7 +34,7 @@ export class FoodCounterViewComponent {
 
   ngOnInit(): void {
 
-    this.httpService.getHTTP('foodCounter ').subscribe((foodCourts: FoodCounter[]) => {
+    this.httpService.getHTTP('foodCounter').subscribe((foodCourts: FoodCounter[]) => {
       this.counterDataList = foodCourts;
       this.counterBehaviourSubject.next(this.counterDataList);
     })

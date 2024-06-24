@@ -42,7 +42,6 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "ag-grid-angular": "^31.3.2",
     "chart.js": "^4.4.3",
     "lodash-es": "^4.17.21",
     "ngx-scrollbar": "^13.0.3",

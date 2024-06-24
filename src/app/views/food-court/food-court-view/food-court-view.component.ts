@@ -1,11 +1,9 @@
-import { Component, ViewChild, viewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { cilShieldAlt, cilDelete, cilPencil, cilArrowThickRight, cilArrowThickBottom, cilArrowThickTop } from '@coreui/icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
-import { ColDef, GridOptions } from 'ag-grid-community';
-import { FoodCourt } from 'src/app/models/food-court.model'
-import { DetailCellRenderer } from '../food-counter-view/food-counter-view'
+import { FoodCourt } from 'src/app/models/food-court.model';
 import { foodCourtDisplayColumn } from 'src/app/models/table-column-def';
 
 @Component({
@@ -53,7 +51,8 @@ export class FoodCourtViewComponent {
       STATE: newFoodCourt.state,
       COUNTRY: newFoodCourt.country,
       BUILDING_ID: 1,
-      COMPANY_ID: 1
+      COMPANY_ID: 1,
+      _ID: this.foodCourtDataList.length + 1
     }
 
     this.httpService.postHTTP('foodcourt', foodCounter).subscribe(data => {

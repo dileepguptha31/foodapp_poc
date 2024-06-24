@@ -1,145 +1,89 @@
-<!-- <c-card>
+<c-card>
     <c-card-header>
         <c-container>
             <c-row>
                 <c-col>Food Courts</c-col>
                 <c-col class="text-end">
                     <app-food-court-form (addNewForm)="onAddNewFoodCourt($event)"
-                        [foodCourtFormInfo]="editFoodCourt"></app-food-court-form>
+                        [foodCourtFormInfo]="editFoodCourtData"></app-food-court-form>
                 </c-col>
             </c-row>
         </c-container>
     </c-card-header>
     <c-card-body>
-        <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
-            <thead class="text-nowrap text-truncate">
-                <tr>
-                    <th class="bg-body-tertiary">Food Court Name</th>
-                    <th class="bg-body-tertiary ">Building Name</th>
-                    <th class="bg-body-tertiary text-center">Street</th>
-                    <th class="bg-body-tertiary text-center">City</th>
-                    <th class="bg-body-tertiary text-center">Pincode</th>
-                    <th class="bg-body-tertiary text-center">State</th>
-                    <th class="bg-body-tertiary text-center">Country</th>
-                    <th class="bg-body-tertiary text-center">Edit</th>
-                    <th class="bg-body-tertiary text-center">Delete</th>
-                    <th class="bg-body-tertiary text-center">View</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of (foodCourt$ | async)">
-                    <td class="text-center">
-                        <span>{{item.foodCourtName}}</span>
-                    </td>
-                    <td class="text-center">
-                        <span>{{item.buildingName}}</span>
-                    </td>
-                    <td class="text-center">
-                        <span>{{item.streetName}}</span>
-                    </td>
-                    <td class="text-center">
-                        <span>{{item.city}}</span>
-                    </td>
-                    <td class="text-center">
-                        <span>{{item.pincode}}</span>
-                    </td>
-                    <td class="text-center">
-                        <span>{{item.state}}</span>
-                    </td>
-                    <td class="text-center">
-                        <span>{{item.country}}</span>
-                    </td>
-                    <td class="text-center" (click)="onEdit(item)">
-                        <svg [cIcon]="icons.cilPencil" size="xl" title="List Icon"></svg>
-                    </td>
-                    <td class="text-center" (click)="onDelete(item.id)">
-                        <svg [cIcon]="icons.cilDelete" width="25" title="Shield Icon"></svg>
-                    </td>
-                    <td class="text-center" (click)="onView(item.id)">
-                        <svg [cIcon]="icons.cilArrowThickRight" width="25" title="Shield Icon"></svg>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </c-card-body>
-</c-card> -->
 
-<c-container>
-    <c-row>
-        <c-col>Food Courts</c-col>
-        <c-col class="text-end">
-            <app-food-court-form (addNewForm)="onAddNewFoodCourt($event)"
-                [foodCourtFormInfo]="editFoodCourtData"></app-food-court-form>
-        </c-col>
-    </c-row>
-</c-container>
-<table mat-table [dataSource]="(foodCourt$ | async)" class="mat-elevation-z8" multiTemplateDataRows>
+        <table mat-table [dataSource]="(foodCourt$ | async)" class="mat-elevation-z8" multiTemplateDataRows>
 
-    <!--- Note that these columns can be defined in any order.
+            <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="FOOD_COURT_NAME">
-        <th mat-header-cell *matHeaderCellDef> Food Court Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.FOOD_COURT_NAME}} </td>
-    </ng-container>
+            <!-- Position Column -->
+            <ng-container matColumnDef="FOOD_COURT_NAME">
+                <th mat-header-cell *matHeaderCellDef> Food Court Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.FOOD_COURT_NAME}} </td>
+            </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="BUILDING_NAME">
-        <th mat-header-cell *matHeaderCellDef> Building Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.BUILDING_NAME}} </td>
-    </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="BUILDING_NAME">
+                <th mat-header-cell *matHeaderCellDef> Building Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.BUILDING_NAME}} </td>
+            </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="STREET_NAME">
-        <th mat-header-cell *matHeaderCellDef> Street </th>
-        <td mat-cell *matCellDef="let element"> {{element.STREET_NAME}} </td>
-    </ng-container>
+            <!-- Weight Column -->
+            <ng-container matColumnDef="STREET_NAME">
+                <th mat-header-cell *matHeaderCellDef> Street </th>
+                <td mat-cell *matCellDef="let element"> {{element.STREET_NAME}} </td>
+            </ng-container>
 
-    <ng-container matColumnDef="CITY">
-        <th mat-header-cell *matHeaderCellDef> City </th>
-        <td mat-cell *matCellDef="let element"> {{element.CITY}} </td>
-    </ng-container>
-    <ng-container matColumnDef="PINCODE">
-        <th mat-header-cell *matHeaderCellDef> Pincode </th>
-        <td mat-cell *matCellDef="let element"> {{element.PINCODE}} </td>
-    </ng-container>
-    <ng-container matColumnDef="STATE">
-        <th mat-header-cell *matHeaderCellDef> State </th>
-        <td mat-cell *matCellDef="let element"> {{element.STATE}} </td>
-    </ng-container>
-    <ng-container matColumnDef="COUNTRY">
-        <th mat-header-cell *matHeaderCellDef> Country </th>
-        <td mat-cell *matCellDef="let element"> {{element.COUNTRY}} </td>
-    </ng-container>
+            <ng-container matColumnDef="CITY">
+                <th mat-header-cell *matHeaderCellDef> City </th>
+                <td mat-cell *matCellDef="let element"> {{element.CITY}} </td>
+            </ng-container>
+            <ng-container matColumnDef="PINCODE">
+                <th mat-header-cell *matHeaderCellDef> Pincode </th>
+                <td mat-cell *matCellDef="let element"> {{element.PINCODE}} </td>
+            </ng-container>
+            <ng-container matColumnDef="STATE">
+                <th mat-header-cell *matHeaderCellDef> State </th>
+                <td mat-cell *matCellDef="let element"> {{element.STATE}} </td>
+            </ng-container>
+            <ng-container matColumnDef="COUNTRY">
+                <th mat-header-cell *matHeaderCellDef> Country </th>
+                <td mat-cell *matCellDef="let element"> {{element.COUNTRY}} </td>
+            </ng-container>
 
-    <ng-container matColumnDef="Edit">
-        <th mat-header-cell *matHeaderCellDef> Edit </th>
-        <td mat-cell *matCellDef="let element" (click)="onEdit(element)"><svg [cIcon]="icons.cilPencil"
-                size="sm "></svg>
-        </td>
-    </ng-container>
-    <ng-container matColumnDef="View">
-        <th mat-header-cell *matHeaderCellDef> View Counters </th>
-        <td mat-cell *matCellDef="let element" (click)="onView(element)">
-            <svg [cIcon]="icons.cilArrowThickBottom" size="sm " *ngIf="element?._ID != expandedElement?._ID"></svg>
-            <svg [cIcon]="icons.cilArrowThickTop" size="sm " *ngIf="element?._ID == expandedElement?._ID"></svg>
-        </td>
-    </ng-container>
-    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-    <ng-container matColumnDef="expandedDetail">
-        <td mat-cell *matCellDef="let element" [attr.colspan]="colDefs.length">
-            <div class="example-element-detail" *ngIf="element?._ID == expandedElement?._ID">
-                <app-food-counter-view></app-food-counter-view>
-            </div>
-        </td>
-    </ng-container>
+            <ng-container matColumnDef="Edit">
+                <th mat-header-cell *matHeaderCellDef> Edit </th>
+                <td mat-cell *matCellDef="let element" (click)="onEdit(element)" class="text-center">
+                    <svg [cIcon]="icons.cilPencil" size="sm "></svg>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="View">
+                <th mat-header-cell *matHeaderCellDef> View Counters </th>
+                <td mat-cell *matCellDef="let element" (click)="onView(element)" class="text-center">
+                    <svg [cIcon]="icons.cilArrowThickBottom" size="sm "
+                        *ngIf="element?._ID != expandedElement?._ID"></svg>
+                    <svg [cIcon]="icons.cilArrowThickTop" size="sm " *ngIf="element?._ID == expandedElement?._ID"></svg>
+                </td>
+            </ng-container>
+            <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+            <ng-container matColumnDef="expandedDetail">
+                <td mat-cell *matCellDef="let element" [attr.colspan]="colDefs.length">
+                    <div class="example-element-detail" *ngIf="element?._ID == expandedElement?._ID">
+                        <app-food-counter-view></app-food-counter-view>
+                    </div>
+                </td>
+            </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="colDefs"></tr>
-    <tr mat-row *matRowDef="let element; columns: colDefs;" class="example-element-row"
-        [class.example-expanded-row]="expandedElement === element">
-    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-</table>
+            <tr mat-header-row *matHeaderRowDef="colDefs"></tr>
+            <tr mat-row *matRowDef="let element; columns: colDefs;" class="example-element-row"
+                [class.example-expanded-row]="expandedElement === element">
+            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        </table>
+
+    </c-card-body>
+</c-card>
+
 
 <!-- <p-table [value]="(foodCourt$ | async)" dataKey="name" styleClass="p-datatable-sm">
     <ng-template pTemplate="header">
