@@ -28,13 +28,13 @@
             <label cLabel="col" class="col-sm-4">
                 Status :
             </label>
-            <c-col sm="8">                
+            <c-col sm="8">
                 <c-form-check [switch]="true">
-                    <input cFormCheckInput type="checkbox" id="statusinput" /> 
+                    <input cFormCheckInput type="checkbox" id="statusinput" />
                     <!-- <label cFormCheckLabel for="statusinput"> Status</label>                        -->
                 </c-form-check>
             </c-col>
-        </c-row> 
+        </c-row>
         <c-row class="mb-3">
             <label cLabel="col" class="col-sm-4">
                 Name :
@@ -48,9 +48,10 @@
                 Description :
             </label>
             <c-col sm="8">
-                <textarea cFormControl id="descriptioninput" type="text" formControlName="description" rows="3"></textarea>
+                <textarea cFormControl id="descriptioninput" type="text" formControlName="description"
+                    rows="3"></textarea>
             </c-col>
-        </c-row>        
+        </c-row>
         <c-row class="mb-3">
             <label cLabel="col" class="col-sm-4">
                 Category :
@@ -58,25 +59,26 @@
             <c-col sm="8">
                 <input cFormControl id="categoryinput" type="text" formControlName="category" />
             </c-col>
-        </c-row> 
+        </c-row>
         <c-row class="mb-3">
             <label cLabel="col" class="col-sm-4">
                 Sub Category :
             </label>
             <c-col sm="8">
-                <input  cFormControl id="subcategoryinput" type="text" formControlName="subcategory"/>
+                <input cFormControl id="subcategoryinput" type="text" formControlName="subcategory" />
             </c-col>
-        </c-row>         
+        </c-row>
         <c-row class="mb-3">
             <label cLabel="col" class="col-sm-4">
                 Price :
             </label>
             <c-col sm="8">
                 <c-input-group>
-                <input aria-label="Dollar amount (with dot and two decimal places)" cFormControl/>
-              </c-input-group>
-            </c-col>                       
-        </c-row> 
+                    <input aria-label="Dollar amount (with dot and two decimal places)" formControlName="price"
+                        cFormControl />
+                </c-input-group>
+            </c-col>
+        </c-row>
         <c-row class="mb-3">
             <label cLabel="col" class="col-sm-4">
                 Image :
@@ -86,12 +88,12 @@
                     <c-input-group class="mb-3">
                         <input cFormControl id="inputGroupFile02" type="file" />
                         <label cInputGroupText for="inputGroupFile02">
-                          Upload
+                            Upload
                         </label>
-                      </c-input-group>
+                    </c-input-group>
                 </c-input-group>
                 <!-- <input  cFormControl id="imageinput" type="text" formControlName="image"/> -->
             </c-col>
-        </c-row> 
+        </c-row>
     </form>
 </ng-template>

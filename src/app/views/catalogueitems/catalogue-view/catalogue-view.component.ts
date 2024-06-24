@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 // import mainmenudata from '../../../../assets/data/mainmenu.json'
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
-import { catalogueitem } from '../../../models/catalogue-item.model'
+import { CatalogueItem } from '../../../models/catalogue-item.model'
 import { menuItemDisplayColumns } from 'src/app/models/table-column-def';
 import { cilDelete, cilPencil } from '@coreui/icons';
 @Component({
@@ -12,15 +12,15 @@ import { cilDelete, cilPencil } from '@coreui/icons';
   styleUrl: './catalogue-view.component.scss',
 })
 export class CatalogueViewComponent {
-  private menuItemsSubject: BehaviorSubject<catalogueitem[]>;
+  private menuItemsSubject: BehaviorSubject<CatalogueItem[]>;
   public saveEnable: boolean = false;
   public editmenuitem: any = {};
-  private menuItemList: catalogueitem[] = [];
+  private menuItemList: CatalogueItem[] = [];
   constructor(private router: Router, private activeRoute: ActivatedRoute, private httpService: HttpService) {
-    this.menuItemsSubject = new BehaviorSubject<catalogueitem[]>([]);
+    this.menuItemsSubject = new BehaviorSubject<CatalogueItem[]>([]);
   }
 
-  get menuItems$(): Observable<catalogueitem[]> {
+  get menuItems$(): Observable<CatalogueItem[]> {
     return this.menuItemsSubject.asObservable();
   }
 

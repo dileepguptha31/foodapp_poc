@@ -73,36 +73,39 @@
     </c-card-header>
     <c-card-body>
 
-        <table mat-table [dataSource]="menuItems$" class="mat-elevation-z8" multiTemplateDataRows>
+        <table mat-table cdkDropList cdkDropListOrientation="horizontal" [dataSource]="menuItems$"
+            class="mat-elevation-z8" multiTemplateDataRows>
 
             <ng-container matColumnDef="ITEM_NAME">
                 <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.ITEM_NAME}} </td>
+                <td mat-cell *matCellDef="let element">
+                    <c-avatar [size]="'md'" [src]="element.TEM_FULL_IMAGE" />
+                    {{element.ITEM_NAME}}
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="ITEM_CATEGORY">
-                <th mat-header-cell *matHeaderCellDef> Building Name </th>
+                <th mat-header-cell *matHeaderCellDef> Item Category </th>
                 <td mat-cell *matCellDef="let element"> {{element.ITEM_CATEGORY}} </td>
             </ng-container>
 
             <ng-container matColumnDef="ITEM_SUB_CATEGORY">
-                <th mat-header-cell *matHeaderCellDef> Street </th>
+                <th mat-header-cell *matHeaderCellDef> Item SubCategory </th>
                 <td mat-cell *matCellDef="let element"> {{element.ITEM_SUB_CATEGORY}} </td>
             </ng-container>
 
             <ng-container matColumnDef="Status">
-                <th mat-header-cell *matHeaderCellDef> City </th>
-                <td mat-cell *matCellDef="let element"> {{element.CITY}} </td>
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element">
+                    <c-form-check [switch]="true">
+                        <input cFormCheckInput type="checkbox" disabled value="true" />
+                    </c-form-check>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="CGST">
-                <th mat-header-cell *matHeaderCellDef> Pincode </th>
-                <td mat-cell *matCellDef="let element"> {{element.CGST}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="STATE">
-                <th mat-header-cell *matHeaderCellDef> State </th>
-                <td mat-cell *matCellDef="let element"> {{element.STATE}} </td>
+                <th mat-header-cell *matHeaderCellDef> Price </th>
+                <td mat-cell *matCellDef="let element"> ₹ {{element.CGST}} </td>
             </ng-container>
 
             <ng-container matColumnDef="Edit">
@@ -113,9 +116,9 @@
             </ng-container>
 
             <ng-container matColumnDef="Delete">
-                <th mat-header-cell *matHeaderCellDef> Edit </th>
-                <td mat-cell *matCellDef="let element" (click)="onEdit(element)" class="text-center">
-                    <svg [cIcon]="icons.cilPencil" size="sm "></svg>
+                <th mat-header-cell *matHeaderCellDef> Delete </th>
+                <td mat-cell *matCellDef="let element">
+                    <svg [cIcon]="icons.cilDelete" size="sm "></svg>
                 </td>
             </ng-container>
 

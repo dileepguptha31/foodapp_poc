@@ -22,7 +22,7 @@
 //     }
 // ]
 
-export interface catalogueitem{
+export interface CatalogueItem{
     _ID: number,
     ITEM_NAME: string,
     ITEM_DESC: string,

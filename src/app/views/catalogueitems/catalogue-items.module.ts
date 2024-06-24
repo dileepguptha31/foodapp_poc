@@ -29,7 +29,6 @@ import { CatalogueViewComponent } from './catalogue-view/catalogue-view.componen
 import { MenuItemDetailComponent } from './menu-item-detail/menu-item-detail.component'
 import { HttpService } from '../../services/http.service';
 import { HttpClientModule } from '@angular/common/http';
-import { catalogueitem } from '../../models/catalogue-item.model'
 import { MatTableModule } from '@angular/material/table';
 
 const routes: Routes = [
