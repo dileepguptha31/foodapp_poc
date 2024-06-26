@@ -18,7 +18,7 @@ export class FoodCourtViewComponent {
 
   public expandedElement!: FoodCourt;
 
-  constructor(private router: Router, private activeRoute: ActivatedRoute, private httpService: HttpService) {
+  constructor(private httpService: HttpService) {
     this.foodCourtBehaviourSubject = new BehaviorSubject<Array<any>>(this.foodCourtDataList);
   }
 

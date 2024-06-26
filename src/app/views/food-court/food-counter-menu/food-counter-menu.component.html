@@ -2,19 +2,30 @@
     <c-card-header>
         <c-container>
             <c-row>
-                <c-col>Menu</c-col>
+                <c-col>Food Counter</c-col>
                 <c-col class="text-end">
-                    <app-menu-item-detail (addNewForm)="onAddNewMenu($event)"
-                        [menuitemdetailformInput]="editmenuitem"></app-menu-item-detail>
+                    <!-- <app-food-counter-form (addNewForm)="onAddCounter($event)"
+                        [counterFormInfo]="editCounter"></app-food-counter-form> -->
                 </c-col>
             </c-row>
         </c-container>
     </c-card-header>
     <c-card-body>
-
-        <table mat-table cdkDropList cdkDropListOrientation="horizontal" [dataSource]="menuItems$"
-            class="mat-elevation-z8" multiTemplateDataRows>
-
+        <table mat-table [dataSource]="counterMenus$" class="mat-elevation-z8" multiTemplateDataRows>
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                    </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                    </mat-checkbox>
+                </td>
+            </ng-container>
+           
             <ng-container matColumnDef="ITEM_NAME">
                 <th mat-header-cell *matHeaderCellDef> Name </th>
                 <td mat-cell *matCellDef="let element">
@@ -54,15 +65,15 @@
                 </td>
             </ng-container>
 
-            <ng-container matColumnDef="Delete">
-                <th mat-header-cell *matHeaderCellDef> Delete </th>
-                <td mat-cell *matCellDef="let element">
-                    <svg [cIcon]="icons.cilDelete" size="sm "></svg>
+            <ng-container matColumnDef="View">
+                <th mat-header-cell *matHeaderCellDef> View Menus </th>
+                <td mat-cell *matCellDef="let element" (click)="onView(element)" class="text-center">
+                    <svg [cIcon]="icons.cilPencil" size="sm "></svg>
                 </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="colDefs"></tr>
-            <tr mat-row *matRowDef="let element; columns: colDefs;">
+            <tr mat-row *matRowDef="let element; columns: colDefs;" (click)="selection.toggle(element)">
         </table>
     </c-card-body>
 </c-card>

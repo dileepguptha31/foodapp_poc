@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FoodCourtFormComponent } from './food-court-form/food-court-form.component';
 import { IconModule } from '@coreui/icons-angular';
 import {
+  AvatarComponent,
   ButtonDirective, CardBodyComponent,
   CardComponent, CardHeaderComponent, CardModule, ColComponent, FormControlDirective,
   FormDirective,
@@ -17,11 +18,11 @@ import { FoodCourtComponent } from './food-court.component';
 import { FoodCourtViewComponent } from './food-court-view/food-court-view.component';
 import { FoodCounterViewComponent } from './food-counter-view/food-counter-view.component';
 import { FoodCounterFormComponent } from './food-counter-form/food-counter-form.component';
-import { CellIconRendererComponent } from '../common/cell-icon-renderer/cell-icon-renderer.component';
-
+import { FoodCounterMenuComponent } from './food-counter-menu/food-counter-menu.component';
 import { HttpService } from '../../services/http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const routes: Routes = [
   {
@@ -32,7 +33,7 @@ const routes: Routes = [
         data: { title: $localize`Food Court` }
       },
       {
-        path: 'counter/:id', component: FoodCounterViewComponent,
+        path: 'counter/:id', component: FoodCounterMenuComponent,
         data: { title: $localize`Food Counter` }
       },
       { path: '', redirectTo: 'food-court-view', pathMatch: 'full' }
@@ -42,7 +43,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [FoodCourtComponent, FoodCourtFormComponent, FoodCourtViewComponent, FoodCounterViewComponent, FoodCounterFormComponent, CellIconRendererComponent],
+  declarations: [FoodCourtComponent, FoodCourtFormComponent, FoodCourtViewComponent, FoodCounterViewComponent, FoodCounterFormComponent, FoodCounterMenuComponent],
   exports: [],
   providers: [HttpService],
   imports: [
@@ -50,8 +51,8 @@ const routes: Routes = [
     RouterModule.forChild(routes), HttpClientModule,
     IconModule, ReactiveFormsModule, FormsModule, CardModule, FormDirective,
     ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent,
-    ModalModule, GridModule, RowComponent, ColComponent, FormLabelDirective, FormControlDirective,
-    MatTableModule,
+    ModalModule, GridModule, RowComponent, ColComponent, FormLabelDirective, FormControlDirective, AvatarComponent,
+    MatTableModule, MatCheckboxModule,
     HttpClientModule,
     FormsModule,
   ],

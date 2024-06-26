@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { cilShieldAlt, cilDelete, cilPencil, cilArrowThickRight } from '@coreui/icons';
+import { cilShieldAlt, cilDelete, cilPencil, cilArrowThickRight, cilViewColumn } from '@coreui/icons';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
 import { FoodCounter } from 'src/app/models/food-counter.model';
 import { foodCounterDisplayColumn } from 'src/app/models/table-column-def';
 import { FoodCourt } from 'src/app/models/food-court.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-food-counter-view',
@@ -15,12 +16,12 @@ export class FoodCounterViewComponent {
   private counterBehaviourSubject: BehaviorSubject<Array<FoodCounter>>;
   public editedCounterData: FoodCounter = <FoodCounter>{};
   private counterDataList: Array<FoodCounter> = [];
-  icons = { cilDelete, cilPencil, cilShieldAlt, cilArrowThickRight };
+  icons = { cilViewColumn, cilPencil, cilShieldAlt };
 
   public expandedElement!: FoodCounter;
 
   @Input('foodCourt') foodCourt!: FoodCourt;
-  constructor(private httpService: HttpService) {
+  constructor(private router: Router, private activeRoute: ActivatedRoute, private httpService: HttpService) {
     this.counterBehaviourSubject = new BehaviorSubject<Array<any>>([]);
   }
 
@@ -44,7 +45,6 @@ export class FoodCounterViewComponent {
 
   }
   onAddCounter(newCounter: FoodCounter) {
-
     newCounter._ID = this.counterDataList.length + 1;
     newCounter.FOOD_COURT_ID = this.foodCourt._ID;
 
@@ -55,19 +55,10 @@ export class FoodCounterViewComponent {
   }
 
   onEdit(data: any) {
-    console.log('selectec outner')
     this.editedCounterData = data;
   }
 
-  onDelete(id: number) {
-    // const counterList: Array<any> = [];
-    // for (let index = 0; index < this.counterDataList.length; index++) {
-    //   const element = this.counterDataList[index];
-    //   if (element.id !== id) {
-    //     counterList.push(element);
-    //   }
-    // }
-    // this.counterDataList = counterList;
-    // this.counterBehaviourSubject.next(this.counterDataList);
+  onView(data: any) {
+    this.router.navigate(['counter/1'], { relativeTo: this.activeRoute.parent });
   }
 }
